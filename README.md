@@ -1,1 +1,1 @@
-# ComputerVisioneLab01
+# Image warping and Bilinear interpolation
