@@ -8,8 +8,8 @@ ty = 100;
 sx = 1;
 sy = 1;
 
-shx = 2;
-shy = 2;
+shx = 0;
+shy = 0;
 
 
 T = [ sx   shy   0;
