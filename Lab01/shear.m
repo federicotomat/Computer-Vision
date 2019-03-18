@@ -5,8 +5,8 @@
 function [transfImg, RGB] = Shear(Img, sx, sy)
 
     %Assemble the trasformation matrix
-    shear=[1    sx  0;
-           sy   1   0;
+    shear=[1    sy  0;
+           sx   1   0;
            0    0   1];
 
     %Make the matrix an affine2d object
