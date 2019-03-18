@@ -13,27 +13,30 @@ resizeX = 2;
 resizeY = 2;
 shearX = 0.5;
 shearY = 0.5;
-theta = pi/3;
+theta = pi/3; 
+E=.2;
+F=.3;
 
 %% apply the traslation
-[ImgTranslated, RGBTranslated] = Translation(inputImg, xTranslation, yTranslation);
+[ImgTranslated, RGBTranslated] = translation(inputImg, xTranslation, yTranslation);
 PrintRGB(ImgTranslated, RGBTranslated, 'Translated Image');
 %figure, imagesc(ImgTranslated), title('Translated Image');
 
 %% apply the rotation
-[ImgRotated, RGBRotated] = Rotation(inputImg, theta);
+[ImgRotated, RGBRotated] = rotation(inputImg, theta);
 PrintRGB(ImgRotated, RGBRotated, 'Rotated Image');
 %figure, imagesc(ImgRotated), title('Rotated Image');
 
 %% apply the shear
-[ImgSheared, RGBSheared] = Shear(inputImg, shearX, shearY);
+[ImgSheared, RGBSheared] = shear(inputImg, shearX, shearY);
 PrintRGB(ImgSheared, RGBSheared, 'Sheared Image');
 %figure, imagesc(ImgSheared), title('Sheared Image');
 
 %% apply the scale
-[ImgScaled, RGBScaled] = Scale(inputImg, resizeX, resizeY);
+[ImgScaled, RGBScaled] = scale(inputImg, resizeX, resizeY);
 PrintRGB(ImgScaled, RGBScaled, 'Scaled ');
 %figure, imagesc(ImgScaled), title('Scaled Image');
+
 
 %% Show the comparison between transformation
 pairOfImages = [  inputImg, ImgTranslated ;

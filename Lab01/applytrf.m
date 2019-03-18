@@ -2,7 +2,7 @@
 %this function aplly the inverse trasformation for each channel of the image
 %and operate the bilinear interpolation
 
-function RGB = Applytrf(Img, T)
+function RGB = applytrf(Img, T)
     %inizialize RGB
     RGB = zeros(size(Img));
 

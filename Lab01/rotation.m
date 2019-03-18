@@ -11,7 +11,7 @@ function [transfImg, RGB] = Rotation(inputImg, theta)
     %Make the matrix an affine2d object
     T = affine2d(rot);
 
-    RGB = Applytrf(inputImg,T);
+    RGB = applytrf(inputImg,T);
 
     %cat the 3 channel
     transfImg = uint8(cat(3,  RGB(:,:,1),   RGB(:,:,2),   RGB(:,:,3)));
