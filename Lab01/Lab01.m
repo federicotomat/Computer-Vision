@@ -9,8 +9,8 @@ inputImg = imread('flower.jpg','jpg');
 %% parameter for the trasformation
 xTranslation = 100;
 yTranslation = 100;
-resizeX = 0.5;
-resizeY = 1;
+resizeX = 2;
+resizeY = 2;
 shearX = 0.5;
 shearY = 0.5;
 theta = pi/3;
