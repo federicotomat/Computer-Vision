@@ -4,15 +4,16 @@
 % image will translate on the left and with positive values of yTranslation 
 % the image will translate up.
 
-function trasfImg = translation(Img, xTr, yTr)
+function [transfImg, RGB] = Translation(Img, xTr, yTr)
+    %Assemble the trasformation matrix
+    tras=[1   0   0;
+          0   1   0;
+         xTr yTr  1];
 
-RGB = zeros(size(Img));
-for i=1:3
-    [row,col] = size(Img(:,:,i));
-    [X,Y] = meshgrid(1:col,1:row);
+    %Make the matrix an affine2d object
+    T = affine2d(tras);
+    RGB = Applytrf(Img,T);
 
-    Xt = (X - xTr);
-    Yt = (Y - yTr);
-    RGB(:,:,i) = griddata(X,Y,double(Img(:,:,i)),Xt,Yt,'linear');
+    %cat the 3 channel
+    transfImg = uint8(cat(3,  RGB(:,:,1),   RGB(:,:,2),   RGB(:,:,3)));
 end
-trasfImg = uint8(cat(3,  RGB(:,:,1),   RGB(:,:,2),   RGB(:,:,3)));
