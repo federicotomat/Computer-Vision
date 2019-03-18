@@ -2,7 +2,7 @@
 % This function shears all channels input image of desired
 % coefficent (shearFactor) and return the sheared image.
 
-function [transfImg, RGB] = Shear(Img, sx, sy)
+function [transfImg, RGB] = Shear(inputImg, sx, sy)
 
     %Assemble the trasformation matrix
     shear=[1    sy  0;
@@ -12,7 +12,7 @@ function [transfImg, RGB] = Shear(Img, sx, sy)
     %Make the matrix an affine2d object
     T = affine2d(shear);
 
-    RGB = Applytrf(Img,T);
+    RGB = Applytrf(inputImg,T);
  
     %cat the 3 channel
     transfImg = uint8(cat(3,  RGB(:,:,1),   RGB(:,:,2),   RGB(:,:,3)));

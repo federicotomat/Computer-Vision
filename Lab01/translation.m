@@ -4,7 +4,7 @@
 % image will translate on the left and with positive values of yTranslation 
 % the image will translate up.
 
-function [transfImg, RGB] = Translation(Img, xTr, yTr)
+function [transfImg, RGB] = Translation(inputImg, xTr, yTr)
     %Assemble the trasformation matrix
     tras=[1   0   0;
           0   1   0;
@@ -12,7 +12,7 @@ function [transfImg, RGB] = Translation(Img, xTr, yTr)
 
     %Make the matrix an affine2d object
     T = affine2d(tras);
-    RGB = Applytrf(Img,T);
+    RGB = Applytrf(inputImg,T);
 
     %cat the 3 channel
     transfImg = uint8(cat(3,  RGB(:,:,1),   RGB(:,:,2),   RGB(:,:,3)));
