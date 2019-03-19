@@ -38,7 +38,6 @@ PrintRGB(ImgSheared, RGBSheared, 'Sheared Image');
 PrintRGB(ImgScaled, RGBScaled, 'Scaled ');
 %figure, imagesc(ImgScaled), title('Scaled Image');
 
-
 %% Show the comparison between transformation
 pairOfImages = [  inputImg, ImgTranslated ;
                 ImgRotated, ImgScaled   ]; 
