@@ -15,8 +15,7 @@ resizeY = 2;
 shearX = 0.5;
 shearY = 0.5;
 theta = pi/3; 
-E=.2;
-F=.3;
+
 
 %% apply the traslation
 [ImgTranslated, RGBTranslated] = translation(inputImg, xTranslation, yTranslation);
