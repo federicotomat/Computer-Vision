@@ -2,7 +2,7 @@
 % This function rotates all channels input image of desired
 % theta angle and return the rotated image.
 
-function [transfImg, RGB] = Rotation(inputImg, theta)
+function [transfImg, RGB] = rotation(inputImg, theta)
     %Assemble the trasformation matrix
     rot=[cos(theta)    -sin(theta)   0;
          sin(theta)     cos(theta)   0;
