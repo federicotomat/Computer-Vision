@@ -4,8 +4,8 @@
 
 function [transfImg, RGB] = rotation(inputImg, theta)
     %Assemble the trasformation matrix
-    rot=[cos(theta)    -sin(theta)   0;
-         sin(theta)     cos(theta)   0;
+    rot=[cos(theta)     sin(theta)   0;
+         -sin(theta)     cos(theta)   0;
               0              0       1];
 
     %Make the matrix an affine2d object

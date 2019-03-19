@@ -1,3 +1,4 @@
+
 clear all 
 close all
 
@@ -35,7 +36,6 @@ PrintRGB(ImgSheared, RGBSheared, 'Sheared Image');
 [ImgScaled, RGBScaled] = scale(inputImg, resizeX, resizeY);
 PrintRGB(ImgScaled, RGBScaled, 'Scaled ');
 %figure, imagesc(ImgScaled), title('Scaled Image');
-
 
 %% Show the comparison between transformation
 pairOfImages = [  inputImg, ImgTranslated ;
