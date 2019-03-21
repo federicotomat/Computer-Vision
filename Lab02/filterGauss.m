@@ -2,13 +2,12 @@
 % Remove the noise by using a low-pass Gaussian filter
 
 function imgFilterGauss = filterGauss(srcImg, sizeH)
-    % the half of the filter size must be three times the standard deviation
+    % The half of the filter size must be three times the standard deviation
     sigma = sizeH/6;
-    % create a Gaussian filter
+    % Create a Gaussian filter
     H = fspecial('gaussian', sizeH, sigma);
-    sprintf('%d',sizeH);
     figure,imagesc(H),title(['Gaussian filter image space size ', sprintf('%d',sizeH)])
     figure,surf(H),title(['Gaussian filter surface space size ', sprintf('%d',sizeH);])
-    % applying filter to the image
+    % Applying filter to the image
     imgFilterGauss = imfilter(srcImg, H);
 end

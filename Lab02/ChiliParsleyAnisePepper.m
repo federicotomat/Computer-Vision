@@ -1,5 +1,5 @@
 %% Hot chili Pepppaaahhh
-function transfImg = ChiliParsleyAnicePepper(srcImg, noiseDen)
+function transfImg = ChiliParsleyAnisePepper(srcImg, noiseDen)
 
     for i=1:size(srcImg,3)
         [row,col] = size(srcImg(:,:,i));
@@ -19,7 +19,7 @@ function transfImg = ChiliParsleyAnicePepper(srcImg, noiseDen)
     trasfImg3 = uint8(cat(3,  allBlack,     allBlack,     srcImg(:,:,3)));
     
     %pairOfImages = [uint8(srcImg),  trasfImg1 ;
-                    %trasfImg2, trasfImg3 ]; 
+    %                    trasfImg2, trasfImg3 ]; 
     
     %figure, imshow(pairOfImages), title('bravi tutti');
     
