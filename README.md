@@ -1,3 +1,3 @@
 # Computer Vision
-1. [Lab01](https://github.com/federicotomat/ComputerVision/tree/master/Lab01)
-2. [Lab02](https://github.com/federicotomat/ComputerVision/tree/master/Lab02)
+1. [Image warping and Bilinear interpolation](https://github.com/federicotomat/ComputerVision/tree/master/Lab01)
+2. [Image filtering and Fourier Transform](https://github.com/federicotomat/ComputerVision/tree/master/Lab02)
