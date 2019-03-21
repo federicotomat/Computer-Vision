@@ -53,8 +53,8 @@ FZ = fftshift(fft2(inputImg));
 figure,imagesc(abs(FZ)),colormap gray,title('Image FFT')
 figure,mesh(abs(FZ)),title('Image FFT')
 
-%% Shift the zero frequencies component to center of spectrum of a low-pass 
-%Gaussian filter (101x101 pixels with sigma = 5).  
+%% Shift the zero frequencies component to center of spectrum of a low-pass
+%Gaussian filter (101x101 pixels with sigma = 5).
 FH = fspecial('gaussian', 101, 5);
 FFZ = fftshift(fft2(FH));
 figure,imagesc(abs(FFZ)),colormap gray,title('Gauss FFT')
