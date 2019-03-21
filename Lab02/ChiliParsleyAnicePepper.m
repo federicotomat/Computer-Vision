@@ -18,10 +18,10 @@ function transfImg = ChiliParsleyAnicePepper(srcImg, noiseDen)
     trasfImg2 = uint8(cat(3,  allBlack,     srcImg(:,:,2),   allBlack));
     trasfImg3 = uint8(cat(3,  allBlack,     allBlack,     srcImg(:,:,3)));
     
-    pairOfImages = [uint8(srcImg),  trasfImg1 ;
-                    trasfImg2, trasfImg3 ]; 
+    %pairOfImages = [uint8(srcImg),  trasfImg1 ;
+                    %trasfImg2, trasfImg3 ]; 
     
-    figure, imshow(pairOfImages), title('bravi tutti');
+    %figure, imshow(pairOfImages), title('bravi tutti');
     
     transfImg = uint8(cat(3,  srcImg(:,:,1),   srcImg(:,:,2),   srcImg(:,:,3)));
 end
