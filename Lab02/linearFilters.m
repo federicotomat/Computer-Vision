@@ -34,8 +34,11 @@ end
 
 % 'same' -> Return the central part of the convolution, which is the same
 % size as the image
+<<<<<<< HEAD
+=======
 
 imgFiltered = conv2 (img, Kernel, 'same');
 imgFiltered=imgFiltered(floor(filterSize/2):(end-floor(filterSize/2)),floor(filterSize/2):(end-floor(filterSize/2)));
+>>>>>>> 66ac33d5f406e071f7290ab2e1e522f01bdf1033
 end
-
+imgFiltered = conv2 (img, Kernel, 'same');
