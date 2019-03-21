@@ -15,7 +15,7 @@ figure, imagesc(imgGauss), colormap gray, title('Image with Gaussian noise')
 figure, imhist(uint8(imgGauss),256), title('Image histogram with Gaussian noise'), xlabel('Gray scale'), ylabel('Number of pixel')
 
 %% Add salt & pepper noise with given noise density
-imgSP = noiseSP(inputImg, 0.2);
+imgSP = noiseSP(inputImg, .2);
 figure, imagesc(imgSP), colormap gray, title('Image with salt & pepper noise')
 figure, imhist(uint8(imgSP),256), title('Image histogram with salt & pepper noise'), xlabel('Gray scale'), ylabel('Number of pixel')
 
@@ -37,13 +37,6 @@ figure, imhist(uint8(lfGauss3),256), title('Low passed histogram (gaussian 3x3)'
 lfGauss7 = filterGauss(imgGauss, 7);
 figure,imagesc(lfGauss7),colormap gray,title('Applying low-pass filter to the image with gaussian noise (7x7)')
 figure, imhist(uint8(lfGauss7),256), title('Low passed histogram (gaussian 7x7)'), xlabel('Gray scale'), ylabel('Number of pixel')
-
-figure;
-subplot( 2, 1, 1 )
-imagesc(lfGauss3);
-subplot( 2, 1, 2 )
-imagesc(lfGauss7);
-
 
 %% Remove s&p noise by using a gaussian low pass filter
 
