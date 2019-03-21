@@ -20,9 +20,16 @@ figure, imagesc(imgSP), colormap gray, title('Image with salt & pepper noise')
 figure, imhist(uint8(imgSP),256), title('Image histogram with salt & pepper noise'), xlabel('Gray scale'), ylabel('Number of pixel')
 
 %% Remove the noise from a image with Gaussian noise by using a moving average
-imgAverageGauss = filterMovingAverage(imgGauss, 3);
-figure,imagesc(imgAverageGauss),colormap gray,title('Smoothing by averaging the image with Gaussian noise')
-figure, imhist(uint8(imgAverageGauss),256), title('Smoothing by averaging histogram (Gauss)'), xlabel('Gray scale'), ylabel('Number of pixel')
+imgAverageGauss3 = filterMovingAverage(imgGauss, 3);
+figure,imagesc(imgAverageGauss3),colormap gray,title('Smoothing by averaging the image with Gaussian noise')
+figure, imhist(uint8(imgAverageGauss3),256), title('Smoothing by averaging histogram (Gauss)'), xlabel('Gray scale'), ylabel('Number of pixel')
+
+imgAverageGauss7 = filterMovingAverage(imgGauss, 3);
+figure,imagesc(imgAverageGauss7),colormap gray,title('Smoothing by averaging the image with Gaussian noise')
+figure, imhist(uint8(imgAverageGauss7),256), title('Smoothing by averaging histogram (Gauss)'), xlabel('Gray scale'), ylabel('Number of pixel')
+
+
+
 
 
 %% Remove the noise from a image with salt & pepper noise by using a moving average
