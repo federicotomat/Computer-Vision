@@ -5,7 +5,8 @@ function imgSP = noiseSP(srcImg, noiseDen)
     [row,col] = size(srcImg);
     maxv = max(max(srcImg)); % research the maximum value of the matrix ??
     
-    noiseMatrix = full(sprand(row, col, noiseDen)); %R = sprand(m,n,density) 
+    noiseMatrix = full(sprand(row, col, noiseDen)); 
+    % R = sprand(m,n,density) 
     % is a random, m-by-n, sparse matrix with approximately density*m*n 
     % uniformly distributed nonzero entries (0 <= density <= 1).
     % la full me la converte a full storage, la sprand ritorna solo i

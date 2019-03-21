@@ -30,6 +30,5 @@ switch method
         
 % 'same' -> Return the central part of the convolution, which is the same
 % size as the image
-imgFiltered = conv2 (img, Kernel, 'same');
 end
-
+imgFiltered = conv2 (img, Kernel, 'same');

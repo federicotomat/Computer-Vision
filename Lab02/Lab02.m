@@ -19,6 +19,14 @@ imgSP = noiseSP(inputImg, 0.2);
 figure, imagesc(imgSP), colormap gray, title('Image with salt & pepper noise')
 figure, imhist(uint8(imgSP),256), title('Image histogram with salt & pepper noise'), xlabel('Gray scale'), ylabel('Number of pixel')
 
+%% CHILI
+v = [0.2 0.2 0.2];
+input2 = imread('flower.jpg', 'jpg');
+figure, imagesc(input2), title('Peppah1')
+input2 = double(input2);
+imgPeppah = ChiliParsleyAnicePepper(input2, v);
+figure, imagesc(imgPeppah), title('Peppah')
+
 %% Remove the noise from a image with Gaussian noise by using a moving average
 imgAverageGauss = filterMovingAverage(imgGauss, 3);
 figure,imagesc(imgAverageGauss),colormap gray,title('Smoothing by averaging the image with Gaussian noise')
