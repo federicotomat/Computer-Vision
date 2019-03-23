@@ -29,7 +29,7 @@ figure, imhist(uint8(imgSP),256), title('Image histogram with salt & pepper nois
 input2 = imread('flower.jpg', 'jpg');
 figure, imagesc(input2), title('Peppah1')
 input2 = double(input2);
-imgPeppah = ChiliParsleyAnicePepper(input2, hyper_rho);
+imgPeppah = ChiliParsleyAnisePepper(input2, hyper_rho);
 figure, imagesc(imgPeppah), title('Peppah')
 
 %% Remove gaussian noise by using a gaussian low pass filter
