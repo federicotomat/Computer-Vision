@@ -104,6 +104,7 @@ figure, imhist(uint8(imgMedianFilter7),256),title('Non-linear filter histogram (
 figure,imagesc(imgLinearFiltered),colormap gray,title(['Linear filter of method ' num2str(method)])
 figure, imhist(uint8(imgLinearFiltered),256),title(['Linear filter histogram of method ' num2str(method)]), xlabel('Gray scale'), ylabel('Number of pixel')
 
+    
 %% Mesh of the original image
 figure,mesh(inputImg),title('Image without FFT')
 
@@ -117,3 +118,9 @@ FH = fspecial('gaussian', n_pixels, sigma_g);
 FFZ = fftshift(fft2(FH));
 figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
+
+%% Metto cose a caso perchè mi diverto lol
+correte = imread ( 'flower.jpg' );
+h = fspecial( 'motion', 50, 45 );
+filteredRGB = imfilter (correte,h);
+figure, imshow (correte), figure, imshow (filteredRGB)
