@@ -120,8 +120,8 @@ figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixel
 figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 %% Save all images produced
 
-for i=1:2
+for i=1:47
     fig=figure(i);
-    saveas(fig,['fig',i],'png')
+    saveas(fig,['fig %f',i],'png')
     close(fig)
 end
