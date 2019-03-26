@@ -117,19 +117,17 @@ figure,mesh(abs(FZ)),title('Image FFT 1')
 %FH = fspecial('gaussian', n_pixels, sigma_g);
 %FFZ = fftshift(fft2(FH));
 [X1,Y1]=meshgrid(1:n_pixels);
-X=X1-floor(n_pixels/2); Y=Y1-floor(n_pixels/2);
+X=X1-floor(64/2); Y=Y1-(64/2;
 
-Z=exp((-X.^2 -Y.^2)/(2*sigma_g^2));
-FFZ=fftshift(fft2(Z));
+Z=exp((-X.^2 -Y.^2)/(2*5^2));%standard deviation: 5 pixels
+figure,mesh(Z),xlabel('x'),ylabel('y'),zlabel('z');
 
 figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
-
 %% Save all images produced
-for i=1:47
-    fig=figure(i);
-    fname='/home/giovanni/Desktop/Robotics/First_year/Second Semester/Computer Vision/ComputerVision_GIT/Lab02/Images/';
-    figname=['fig',int2str(i)];
-    saveas(fig,fullfile(fname,figname),'png')
-    close(fig)
-end
+% for i=1:47
+%     fig=figure(i);
+%     fname='/home/giovanni/Desktop/Robotics/First_year/Second Semester/Computer Vision/ComputerVision_GIT/Lab02/Images/';
+%     saveas(fig,['fig ',i],'png')
+%     close(fig)
+% end

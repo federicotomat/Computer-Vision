@@ -25,7 +25,7 @@ function [imgFiltered, method] = linearFilters(filterSize, inputImg, method)
             %         -10  41 -10;
             %           0 -10  0];
                    
-            Kernel(center, center) = 2;
+            Kernel(center, center) = 5;
             Kernel = Kernel - (ones(filterSize)/(filterSize^2));
 
         otherwise
