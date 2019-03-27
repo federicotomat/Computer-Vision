@@ -9,4 +9,4 @@ The first step of this assignment consists of adding a Gaussian noise and thena 
 
 For doing that we decided to use a function for each of these types of filter.
 
-Finally for the FFT we use the function <em>fft2</em> and the <em>fftshift</em> to shift the zero-frequency component to the center of the spectrum, after this we used the <em>mesh<\em> function to visualize the transformed image.
+Finally for the FFT we use the function <em>fft2</em> and the <em>fftshift</em> to shift the zero-frequency component to the center of the spectrum, after this we used the <em>mesh</em> function to visualize the transformed image.
