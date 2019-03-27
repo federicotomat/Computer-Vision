@@ -3,8 +3,8 @@ close all
 
 %% Computer Vision Lab 2
 %Image filtering and Fourier Transform
-inputImg = imread('tree.png', 'png');
-%inputImg = imread('i235.png', 'png');
+%inputImg = imread('tree.png', 'png');
+inputImg = imread('i235.png', 'png');
 figure, imagesc(inputImg), colormap gray, title('Original image')
 figure, imhist(inputImg, 256), title('Original image histogram'), xlabel('Gray scale'), ylabel('Number of pixel')
 inputImg = double(inputImg);
@@ -128,7 +128,7 @@ figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n
 %% Save all images produced
 for i=1:47
     fig=figure(i);
-    fname='/home/giovanni/Desktop/Robotics/First_year/Second Semester/Computer Vision/ComputerVision_GIT/Lab02/Images/';
+    fname='C:\Users\Federico\Desktop\Images';
     figname=['fig',int2str(i)];
     saveas(fig,fullfile(fname,figname),'png')
     close(fig)
