@@ -8,6 +8,7 @@ inputImg = imread('i235.png', 'png');
 figure, imagesc(inputImg), colormap gray, title('Original image')
 figure, imhist(inputImg, 256), title('Original image histogram'), xlabel('Gray scale'), ylabel('Number of pixel')
 inputImg = double(inputImg);
+
 %% Paremeter table
 sigma_n=20;
 rho_n=.2;
@@ -37,6 +38,9 @@ figure, imagesc(imgPeppah), title('Peppah')
 lfGauss3 = filterGauss(imgGauss, 3);
 figure,imagesc(lfGauss3),colormap gray,title('Applying low-pass filter to the image with gaussian noise (3x3)')
 figure, imhist(uint8(lfGauss3),256), title('Low passed histogram (gaussian 3x3)'), xlabel('Gray scale'), ylabel('Number of pixel')
+
+% esegui qua, poi l'ho messo di prova
+printFigure(4, {inputImg imgSP lfGauss3 lfGauss3}, {3, 3, 3, 2});
 
 %7x7
 lfGauss7 = filterGauss(imgGauss, 7);
@@ -126,10 +130,10 @@ figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixel
 figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 
 %% Save all images produced
-for i=1:47
-    fig=figure(i);
-    fname='C:\Users\Federico\Desktop\Images';
-    figname=['fig',int2str(i)];
-    saveas(fig,fullfile(fname,figname),'png')
-    close(fig)
-end
+% for i=1:47
+%     fig=figure(i);
+%     fname='C:\Users\Federico\Desktop\Images';
+%     figname=['fig',int2str(i)];
+%     saveas(fig,fullfile(fname,figname),'png')
+%     close(fig)
+% end
