@@ -40,7 +40,7 @@ figure,imagesc(lfGauss3),colormap gray,title('Applying low-pass filter to the im
 figure, imhist(uint8(lfGauss3),256), title('Low passed histogram (gaussian 3x3)'), xlabel('Gray scale'), ylabel('Number of pixel')
 
 % esegui qua, poi l'ho messo di prova
-printFigure(4, {inputImg imgSP lfGauss3 lfGauss3}, {3, 3, 3, 2});
+printFigure(4, {inputImg imgSP lfGauss3 lfGauss3}, {3, 3, 3, 2}, 'ciao');
 
 %7x7
 lfGauss7 = filterGauss(imgGauss, 7);
@@ -118,13 +118,8 @@ figure,imagesc(abs(FZ)),colormap gray,title('Image FFT')
 figure,mesh(abs(FZ)),title('Image FFT 1')
 
 %% Shift the zero frequencies component to center of spectrum of a low-pass Gaussian filter (101x101 pixels with sigma = 5).
-%FH = fspecial('gaussian', n_pixels, sigma_g);
-%FFZ = fftshift(fft2(FH));
-[X1,Y1]=meshgrid(1:n_pixels);
-X=X1-floor(n_pixels/2); Y=Y1-floor(n_pixels/2);
-
-Z=exp((-X.^2 -Y.^2)/(2*sigma_g^2));
-FFZ=fftshift(fft2(Z));
+FH = fspecial('gaussian', n_pixels, sigma_g);
+FFZ = fftshift(fft2(FH));
 
 figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
