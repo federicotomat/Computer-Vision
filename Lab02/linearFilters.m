@@ -4,8 +4,7 @@
 % Method:
 % 1 : Impulse kernel
 % 2 : Shifted left kernel
-% 3 : Sharpening filter --> per la nitidezza, necessario prima togliere
-% rumore
+% 3 : Sharpening filter
 
 function [imgFiltered, method] = linearFilters(filterSize, inputImg, method)
 

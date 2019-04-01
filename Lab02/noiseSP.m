@@ -7,8 +7,7 @@ function imgSP = noiseSP(inputImg, noiseDen)
     noiseMatrix = full(sprand(row, col, noiseDen));
     % Is a random, m-by-n, sparse matrix with approximately density *m *n
     % uniformly distributed nonzero entries (0 <= density <= 1).
-    % La full me la converte a full storage mentre la sprand ritorna solo i
-    % valori diversi da zero
+    
     mask1 = noiseMatrix > 0 & noiseMatrix < 0.5; %boolean
     mask2 = noiseMatrix >= 0.5;
 

@@ -1,13 +1,5 @@
 %% Function to print the figure 
-% i parametri sono indice della stampa, immagini da stampare e metodo con
-% cui stamparle
-% 1 imagesc, 2 istogramma, 3 imshow, 4 mesh
-% volendo si pu� mettere un quarto parametro con le stringe del titolo da
-% associare alla stampa ma mi fanno cagare e volendo possiamo mettere anche
-% un altro parametro che indichi il numero di righe del subplot ma sono
-% inutili e il quarto parametro � il nome dell'immagine, magari metto un
-% controllo perch� non sovrasscriva i vecchi, per� sta diventando un
-% troiaio sto progetto LOL
+
 function printFigure(numberImg, numberRow, inputImg, method, title)
    for i = 1:numberImg
        switch method{i}
@@ -32,7 +24,7 @@ function printFigure(numberImg, numberRow, inputImg, method, title)
        end
    end
    %fig = figure;
-   %fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
+   %fname = /where/you/want/to/save
    %figname = ['fig_', title, '.jpg'];
    %saveas(fig, fullfile(fname, figname), 'jpeg')
    % close(fig)

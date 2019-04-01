@@ -115,19 +115,19 @@ figure, imhist(uint8(imgLinearFiltered3),256),title(['Linear filter histogram of
 
 
 %% Mesh of the original image
-figure, mesh(inputImg),colormap gray:%,title('Image without FFT');
+figure, mesh(inputImg),colormap gray,title('Image without FFT');
 
 %% Shift the zero frequencies component to center of spectrum of the image
 FZ = fftshift(fft2(inputImg));
-figure,imagesc(abs(FZ)),colormap gray;%,title('Image FFT')
+figure,imagesc(abs(FZ)),colormap gray,title('Image FFT')
 figure,mesh(abs(FZ));%,title('Image FFT 1')
 
 %% Shift the zero frequencies component to center of spectrum of a low-pass Gaussian filter (101x101 pixels with sigma = 5).
 FH = fspecial('gaussian', n_pixels, sigma_g);
 FFZ = fftshift(fft2(FH));
 
-figure,imagesc(abs(FFZ)),colormap gray;%,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
-figure,mesh(abs(FFZ));%,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
+figure,imagesc(abs(FFZ)),colormap gray,title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
+figure,mesh(abs(FFZ)),title(['Gauss FFT with ', num2str(n_pixels),'x', num2str(n_pixels), ' pixels and sigma=', num2str(sigma_g)])
 
 %% Print all
 
