@@ -8,29 +8,32 @@
 % inutili e il quarto parametro � il nome dell'immagine, magari metto un
 % controllo perch� non sovrasscriva i vecchi, per� sta diventando un
 % troiaio sto progetto LOL
-function printFigure(numberImg, img, method, nome)
+function printFigure(numberImg, numberRow, inputImg, method, title)
    for i = 1:numberImg
        switch method{i}
             case 1 % imagesc
-                subplot(2,2,i); imagesc(double(img{i})); colormap gray; axis on;
+                subplot(numberRow, numberImg/numberRow, i); imagesc(double(inputImg{i})); colormap gray; axis on;
            
             case 2 % istrogramma
-                subplot(2,2,i); imhist(uint8(img{i}), 256); colormap gray; axis on;
+                subplot(numberRow, numberImg/numberRow, i); imhist(uint8(inputImg{i}), 256); colormap gray; axis on;
                 
             case 3 % imshow
-                subplot(2,2,i); imshow(uint8(img{i})); colormap gray; axis on;
+                subplot(numberRow, numberImg/numberRow, i); imshow(uint8(inputImg{i})); colormap gray; axis on;
                 
             case 4 % mesh
-                subplot(2,2,i);mesh(inputImg),colormap gray, axis on;
+                subplot(numberRow, numberImg/numberRow, i); mesh(inputImg{i}); colormap gray; axis on;
+                
+            case 5 % surf
+                subplot(numberRow, numberImg/numberRow, i); surf(inputImg{i}); axis on;
                 
             otherwise
-                disp('BRATTINA')
+                disp('Error!')
             return
        end
    end
    fig = figure;
-   %fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
-   %figname = ['fig_',nome];
-   %saveas(fig,fullfile(fname, figname),'png')
-   %close(fig)
+   fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
+   figname = ['fig_', title, '.jpg'];
+   saveas(fig, fullfile(fname, figname), 'jpeg')
+   % close(fig)
 end

@@ -1,7 +1,7 @@
 %% Moving average
 % Remove the noise by using a moving average
 
-function imgFilterAve = filterMovingAverage(inputImg, sizeK) 
+function [imgFilterAve, K] = filterMovingAverage(inputImg, sizeK) 
     % Costruction of the agumented matrix to ignore the fact that we are
     % loosing with convolution
     inputImg = matrixFramer(inputImg, sizeK);
