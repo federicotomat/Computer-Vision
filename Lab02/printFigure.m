@@ -31,9 +31,9 @@ function printFigure(numberImg, numberRow, inputImg, method, title)
             return
        end
    end
-   fig = figure;
-   fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
-   figname = ['fig_', title, '.jpg'];
-   saveas(fig, fullfile(fname, figname), 'jpeg')
+   %fig = figure;
+   %fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
+   %figname = ['fig_', title, '.jpg'];
+   %saveas(fig, fullfile(fname, figname), 'jpeg')
    % close(fig)
 end
