@@ -2,11 +2,11 @@
 % i parametri sono indice della stampa, immagini da stampare e metodo con
 % cui stamparle
 % 1 imagesc, 2 istogramma, 3 imshow, 4 mesh
-% volendo si può mettere un quarto parametro con le stringe del titolo da
+% volendo si puï¿½ mettere un quarto parametro con le stringe del titolo da
 % associare alla stampa ma mi fanno cagare e volendo possiamo mettere anche
 % un altro parametro che indichi il numero di righe del subplot ma sono
-% inutili e il quarto parametro è il nome dell'immagine, magari metto un
-% controllo perchè non sovrasscriva i vecchi, però sta diventando un
+% inutili e il quarto parametro ï¿½ il nome dell'immagine, magari metto un
+% controllo perchï¿½ non sovrasscriva i vecchi, perï¿½ sta diventando un
 % troiaio sto progetto LOL
 function printFigure(numberImg, img, method, nome)
    for i = 1:numberImg
@@ -29,8 +29,8 @@ function printFigure(numberImg, img, method, nome)
        end
    end
    fig = figure;
-   fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
-   figname = ['fig_',nome];
-   saveas(fig,fullfile(fname, figname),'png')
+   %fname = 'C:\Users\Federico\Desktop\Images'; %indicare il proprio percorso
+   %figname = ['fig_',nome];
+   %saveas(fig,fullfile(fname, figname),'png')
    %close(fig)
 end
