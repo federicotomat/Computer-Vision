@@ -21,15 +21,11 @@ end
 sigma=(1:1:4);
 
 %% Laplacian of Gaussian Operator:
-
 for i=1:length(sigma)
-    g(:,:,i)=LaplacianOfGaussian(sigma(i));
+    Gaussian(i)=LaplacianOfGaussian(sigma(i));
 end
 
-method(1:lenght(sigma))=5;
-printFigure(length(sigma), 2, g, method, 'From 1 to 4 with step 1 LoG comparison')
-
-%% Convolve Gaussian with Original Image
-
+methof
+printFigure(length(sigma), 2, )
 
 
