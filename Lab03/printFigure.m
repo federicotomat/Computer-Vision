@@ -1,7 +1,7 @@
 %% Function to print the figure 
 
 function printFigure(numberImg, numberRow, inputImg, method, title)
-figure()
+figure(), title(title);
    for i = 1:numberImg
        switch method{i}
             case 1 % imagesc
