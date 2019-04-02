@@ -8,6 +8,6 @@
 ## Authors
 | Name | E-mail |
 |------|--------|
-| Giovanni Battista Borrè |  |
-| Tommaso Gruppi |  |
+| Giovanni Battista Borrè | giovaborr@gmail.com |
+| Tommaso Gruppi | tommygruppi@gmail.com |
 | Federico Tomat | tomatfede@gmail.com |
