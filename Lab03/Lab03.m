@@ -3,9 +3,9 @@ close all
 
 %% Read the images
 
-img = double(imread('car.bmp'));
-% img = double(imread('cameraman.tif'));
-%img = imread('boccadasse.jpg');
+%img = double(imread('car.bmp'));
+%img = double(imread('cameraman.tif'));
+img = imread('boccadasse.jpg');
 
 %make gray image
 
@@ -18,11 +18,19 @@ end
 
 %% Parameters
 
-sigma=(1.5:0.1:2.2);
-sigmaf=1.5;
+%standard deviation for Gaussian
+sigma=(1.1:0.1:1.8);
+sigmaf=2.5;
 
-threshold=(.2:.1:.8);
+%treshold for zero crossing
+threshold=(.2:.1:.7);
 thresholdf=.1;
+
+%Lower and upper bounds for hysterisis
+L=(.1:.1:.8);
+H=(.2:.1:.9);
+Hf=14.1;
+Lf=14.09;
 
 %% Laplacian of Gaussian Operator:
 
@@ -43,29 +51,46 @@ for i=1:length(sigma)
 end
 
 %printFigure(length(sigma), 2,ImgConvGaussian , method, ['Image convoluted with LoG with sigma = ', sigma])
-clear method
+
 
 %% Zero Crossing varing sigma
 
 for i=1:length(sigma)
-    edge{i}= zeroCrossingEdgeDedector(thresholdf, ImgConvGaussian{i}) ;
-    method{i}=1;
+    my_edge{i}= zeroCrossingEdgeDedector(thresholdf, ImgConvGaussian{i}) ;
 end
 
-%printFigure(length(sigma), 2,edge , method,strcat('Edge comparison with sigma = ', num2str(sigma)))
-clear method
+%printFigure(length(sigma), 2,my_edge , method,strcat('Edge comparison with sigma = ', num2str(sigma)))
 
 %% Zero Crossing varing treshold
 
-g = LaplacianOfGaussian(sigmaf);
-ImgConvGaussian=conv2(matrixFramer(img, size(g,2)), g, 'same');
-ImgConvGaussian= ImgConvGaussian(floor(size(g,2)/2):(end-floor(size(g,2)/2)),floor(size(g,2)/2):(end-floor(size(g,2)/2)));
+ImgConvGaussianf=conv2(matrixFramer(img, size(LaplacianOfGaussian(sigmaf),2)), LaplacianOfGaussian(sigmaf), 'same');
+ImgConvGaussianf= ImgConvGaussianf(floor(size(g,2)/2):(end-floor(size(g,2)/2)),floor(size(g,2)/2):(end-floor(size(g,2)/2)));
 
 for i=1:length(threshold)
-    edge{i}= zeroCrossingEdgeDedector(threshold(i), ImgConvGaussian) ;
+    my_edge{i}= zeroCrossingEdgeDedector(threshold(i), ImgConvGaussianf) ;
+end
+
+%printFigure(length(threshold), 2,my_edge , method,strcat('Edge comparison with treshold = ', num2str(threshold)))
+
+
+%% Hysteresis Thresholding varing sigma
+for i=1:length(sigma)
+    my_edge{i}= hysteresisTrhesolding(Hf,Lf, ImgConvGaussian{i});
+   
+end
+%printFigure(length(sigma), 2, my_edge , method, strcat('Hysteresis Thresholding edge comparison with sigma = ', num2str(sigma)))
+figure()
+imagesc(my_edge{1}),colormap gray;
+%% Hysteresis Thresholding varing H and L
+for i=1:length(L)
+    my_edge{i}= hysteresisTrhesolding(H(i),L(i), ImgConvGaussianf);
     method{i}=1;
 end
 
-%printFigure(length(sigma), 2,edge , method,strcat('Edge comparison with sigma = ', num2str(sigma)))
+%printFigure(length(sigma), 2,my_edge , method, 'Hysteresis Thresholding edge comparison with varing H and L = ')
 clear method
 
+%% Comparison with matlab function
+
+mat_edge=edge(img);
+figure(),imshow(mat_edge);
