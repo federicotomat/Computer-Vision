@@ -108,10 +108,12 @@ imagesc(edgeMatrix),colormap gray;
 
 %% Sobel Edge Detector method
 
-imgInput = imread('boccadasse.jpg');
+imgInput = double(imread('cameraman.tif'));
 figure, imshow(imgInput), title('Original image');
+imgInput = rgb2gray(imgInput);
 [imgSobelEdge, sobelGradient] = sobel(imgInput);
 
 figure, imshow(sobelGradient), title('Sobel Gradient');
-figure, imshow(imgSobelEdge), title('Edge detected Image');
+
+
 
