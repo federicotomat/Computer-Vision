@@ -4,13 +4,13 @@ close all
 %% Read the images
 
 %img = double(imread('car.bmp'));
-img = double(imread('cameraman.tif'));
+imgInput = double(imread('cameraman.tif'));
 %img = imread('boccadasse.jpg');
 
 %make gray image
 
-if size(img,3)>1
-    img = rgb2gray(img); 
+if size(imgInput,3)>1
+    imgInput = rgb2gray(imgInput); 
 end
 
 %figure, imagesc(img),colormap gray, 
@@ -49,7 +49,7 @@ clear method
 %% Convolve Gaussian with Original Image
     
 for i=1:length(sigma)
-    ImgConvGaussian{i}=conv2(matrixFramer(img, size(g{i},2)), g{i}, 'same');
+    ImgConvGaussian{i}=conv2(matrixFramer(imgInput, size(g{i},2)), g{i}, 'same');
     ImgConvGaussian{i}= ImgConvGaussian{i}(floor(size(g{i},2)/2):(end-floor(size(g{i},2)/2)),floor(size(g{i},2)/2):(end-floor(size(g{i},2)/2)));
     method{i}=1;
 end
@@ -68,7 +68,7 @@ end
 %imagesc(my_edge{1}),colormap gray;
 %% Zero Crossing varing treshold
 
-ImgConvGaussianf=conv2(matrixFramer(img, size(LaplacianOfGaussian(sigmaf),2)), LaplacianOfGaussian(sigmaf), 'same');
+ImgConvGaussianf=conv2(matrixFramer(imgInput, size(LaplacianOfGaussian(sigmaf),2)), LaplacianOfGaussian(sigmaf), 'same');
 ImgConvGaussianf= ImgConvGaussianf(floor(size(g,2)/2):(end-floor(size(g,2)/2)),floor(size(g,2)/2):(end-floor(size(g,2)/2)));
 
 for i=1:length(threshold)
@@ -97,14 +97,14 @@ clear method
 
 %% Comparison with matlab function
 
-mat_edge=edge(img);
+mat_edge=edge(imgInput);
 figure(),imshow(mat_edge);
 
 %% Roba che boh
 
-edgeMatrix = cannyEdgeDetector(img,t1,t2);
-figure()
-imagesc(edgeMatrix),colormap gray;
+%bedgeMatrix = cannyEdgeDetector(img,t1,t2);
+%figure()
+%imagesc(edgeMatrix),colormap gray;
 
 %% Sobel Edge Detector method
 
@@ -113,5 +113,15 @@ figure, imshow(imgInput), title('Original image');
 [imgSobelEdge, sobelGradient] = sobel(imgInput);
 
 figure, imshow(sobelGradient), title('Sobel Gradient');
-figure, imshow(imgSobelEdge), title('Edge detected Image');
+figure, imshow(imgSobelEdge), title('Edge detected Image with sobel gradient');
+
+%% Canny filter 
+
+imgInput = imread('boccadasse.jpg');
+%Show input image
+figure, imshow(imgInput);
+imgInput = rgb2gray(imgInput);
+imgInput = double (imgInput);
+
+figure, imshow(canny(imgInput)), title('Edge detected Image with canny')
 
