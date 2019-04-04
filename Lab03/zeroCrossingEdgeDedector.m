@@ -33,4 +33,17 @@ edgeMatrix = zeros(row, col);
                 end
             end
         end
+        
+        %Remove element if has a nord neighbour
+for i = 2:row-1
+    for j= 2:col-1
+        if edgeMatrix(i,j)==2
+            if edgeMatrix(i+1,j)==1
+                edgeMatrix(i,j)=0;
+            end 
+        end
+    end
+end
+
+
 end
