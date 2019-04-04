@@ -4,8 +4,8 @@ close all
 %% Read the images
 
 %img = double(imread('car.bmp'));
-%img = double(imread('cameraman.tif'));
-img = imread('boccadasse.jpg');
+img = double(imread('cameraman.tif'));
+%img = imread('boccadasse.jpg');
 
 %make gray image
 
@@ -24,13 +24,17 @@ sigmaf=2.5;
 
 %treshold for zero crossing
 threshold=(.2:.1:.7);
-thresholdf=.1;
+thresholdf=5.5;
 
 %Lower and upper bounds for hysterisis
 L=(.1:.1:.8);
 H=(.2:.1:.9);
-Hf=14.1;
-Lf=14.09;
+Hf=20.1;
+Lf=20.099;
+
+%t1 and t2 for cabby edge detector
+t1=.8;
+t2=.9;
 
 %% Laplacian of Gaussian Operator:
 
@@ -60,7 +64,8 @@ for i=1:length(sigma)
 end
 
 %printFigure(length(sigma), 2,my_edge , method,strcat('Edge comparison with sigma = ', num2str(sigma)))
-
+%figure()
+%imagesc(my_edge{1}),colormap gray;
 %% Zero Crossing varing treshold
 
 ImgConvGaussianf=conv2(matrixFramer(img, size(LaplacianOfGaussian(sigmaf),2)), LaplacianOfGaussian(sigmaf), 'same');
@@ -79,8 +84,8 @@ for i=1:length(sigma)
    
 end
 %printFigure(length(sigma), 2, my_edge , method, strcat('Hysteresis Thresholding edge comparison with sigma = ', num2str(sigma)))
-figure()
-imagesc(my_edge{1}),colormap gray;
+%figure()
+%imagesc(my_edge{1}),colormap gray;
 %% Hysteresis Thresholding varing H and L
 for i=1:length(L)
     my_edge{i}= hysteresisTrhesolding(H(i),L(i), ImgConvGaussianf);
@@ -94,3 +99,9 @@ clear method
 
 mat_edge=edge(img);
 figure(),imshow(mat_edge);
+
+%% Roba che boh
+
+edgeMatrix = cannyEdgeDetector(img,t1,t2);
+figure()
+imagesc(edgeMatrix),colormap gray;
