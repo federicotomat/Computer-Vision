@@ -1,3 +1,5 @@
+%% Matrix Framer, add a 'specular' frame to the input image
+
 function AugmentedMatrix = matrixFramer(matrix, matrixSize)
     % Add the appropriate edge to the image in order to avoid loss on the edge
     K=floor(matrixSize/2);

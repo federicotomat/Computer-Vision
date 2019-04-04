@@ -1,3 +1,5 @@
+%% Canny edge detector farlocca di giò ihihihi
+
 function edgeMatrix = cannyEdgeDetector(img,k1,k2)
 [img, ~] = filterGauss(img, 3);
 
@@ -9,20 +11,21 @@ edgeMatrix = zeros(row, col);
 % P1=[1 0; 0 -1];
 % P2=[0 1; -1 0]';
 
-%% Define sobel Operator
+% Define sobel Operator
 P1=[1 0 -1;
     2 0 -2;
     1 0 -1];
+
 P2=P1';
 
 
-%% Evaluantion of the gradiendt
-G_x=conv2(img,P1, 'same');
-G_y=conv2(img,P2, 'same');
-theta=rad2deg(atan2(G_y,G_x));
-G=sqrt(G_x.^2+G_y.^2);
+% Evaluantion of the gradiendt
+G_x = conv2(img,P1, 'same');
+G_y = conv2(img,P2, 'same');
+theta = rad2deg(atan2(G_y,G_x));
+G = sqrt(G_x.^2+G_y.^2);
 
-%% Non-maximum suppression 
+% Non-maximum suppression 
 % the crf is divided in 8 different sectors corresponding to 4 directios N-S,E,
 for i = 2:row-1
     for j= 2:col-1
@@ -56,7 +59,7 @@ t1=k1*k2;
 t2=k2;
 
 
-%% Turn Off all the pixels with gradient less than t1 and mark as weak edge
+% Turn Off all the pixels with gradient less than t1 and mark as weak edge
    %between t1 and t2, mark as strong edge if > t2
 for i = 1:row
     for j= 1:col
@@ -71,7 +74,7 @@ for i = 1:row
 end
 
 
-%Remove element if has a nord neighbour
+% Remove element if has a nord neighbour
 for i = 2:row-1
     for j= 2:col-1
         if edgeMatrix(i,j)==2
@@ -84,7 +87,7 @@ end
 
 
 
-%% Look for connnection in pixels marked as weak edge 8 neighbour
+% Look for connnection in pixels marked as weak edge 8 neighbour
 for i = 2:row-1
     for j= 2:col-1
         if edgeMatrix(i,j)==2
@@ -100,7 +103,7 @@ for i = 2:row-1
     end
 end
 
-%% Make zero the pixel in whom i cannot operate
+% Make zero the pixel in whom i cannot operate
 edgeMatrix(:,1)=0;
 edgeMatrix(:,end)=0;
 edgeMatrix(1,:)=0;

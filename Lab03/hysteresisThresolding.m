@@ -1,11 +1,11 @@
-%% Hysteresis Trhesolding
+%% Hysteresis Thresolding
 
-function edgeMatrix = hysteresisTrhesolding(H,L, convMatrix) 
+function edgeMatrix = hysteresisThresolding(H, L, convMatrix) 
 [row, col] = size(convMatrix);
 % Initialization of the matrix
 edgeMatrix = zeros(row, col); 
 % Scan along each row, record an edge point if upper the H limit or
-% if is L<edge<H but near point are switched on 
+% if is L< edge< H but near point are switched on 
         for i = 1:row
             for j= 1:col-1
                 %look for edge > H

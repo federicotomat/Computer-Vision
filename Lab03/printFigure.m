@@ -11,7 +11,7 @@ figure()
                 subplot(numberRow, numberImg/numberRow, i); imhist(uint8(inputImg{i}), 256); colormap gray; axis on;
                 
             case 3 % imshow
-                subplot(numberRow, numberImg/numberRow, i); imshow(uint8(inputImg{i})); colormap gray; axis on;
+                subplot(numberRow, numberImg/numberRow, i); imshow(inputImg{i}); colormap gray; axis on;
                 
             case 4 % mesh
                 subplot(numberRow, numberImg/numberRow, i); mesh(inputImg{i}); colormap gray; axis on;

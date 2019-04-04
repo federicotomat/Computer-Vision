@@ -7,25 +7,38 @@
 % 5. Non-Maximum Suppression 
 % 6. Hystheresis Thresholding
 
-function imgCannyEdge = canny(imgInput)
-
-    %Value for Thresholding
-    ThreshLow = 0.075;
-    ThreshHigh = 0.175;
+function imgCannyEdge = canny(imgInput, ThreshLow, ThreshHigh)
+  
     % Gaussian Filter Coefficient
-    B = [2, 4, 5, 4, 2; 4, 9, 12, 9, 4;5, 12, 15, 12, 5;4, 9, 12, 9, 4;2, 4, 5, 4, 2 ];
+    B = [2,  4,  5,  4, 2; 
+         4,  9, 12,  9, 4;
+         5, 12, 15, 12, 5;
+         4,  9, 12,  9, 4;
+         2,  4,  5,  4, 2];
+     
     B = 1/159.* B;
+    
     % Convolution of image by Gaussian Coefficient
     A = conv2(imgInput, B, 'same');
-    %Filter for horizontal and vertical direction from doc
-    KGx = [-1, 0, 1; -2, 0, 2; -1, 0, 1];
-    KGy = [1, 2, 1; 0, 0, 0; -1, -2, -1];
+    
+    %Filter for horizontal and vertical direction, i define the sobel
+    %operator 
+    KGx = [-1, 0, 1;
+           -2, 0, 2;
+           -1, 0, 1];
+       
+    KGy = [1,  2,  1; 
+           0,  0,  0; 
+          -1, -2, -1];
+      
     %Convolution by image by horizontal and vertical filter
     Filtered_X = conv2(A, KGx, 'same');
     Filtered_Y = conv2(A, KGy, 'same');
+    
     % Calculate directions/orientations
     direction = atan2 (Filtered_Y, Filtered_X);
     direction = direction*180/pi;
+    
     %Adjustment for negative directions, making all directions positive
     for i=1:size(A,1)
         for j=1:size(A,2)
@@ -35,7 +48,9 @@ function imgCannyEdge = canny(imgInput)
         end
     end
     direction2 = zeros(size(A,1), size(A,2));
-    %Adjusting directions to nearest 0, 45, 90, or 135 degree
+    
+    %Adjusting directions to nearest 0, 45, 90, or 135 degree, in sostanza
+    %guardo N-S-W-O
     for i = 1  : size(A,1)
         for j = 1 : size(A,2)
             if ((direction(i, j) >= 0 ) && (direction(i, j) < 22.5) || (direction(i, j) >= 157.5) && (direction(i, j) < 202.5) || (direction(i, j) >= 337.5) && (direction(i, j) <= 360))
@@ -49,11 +64,13 @@ function imgCannyEdge = canny(imgInput)
             end
         end
     end
-    % figure, imagesc(arah2); colorbar;
+    % figure, imagesc(direction2); colorbar;
+    
     %Calculate magnitude
     magnitude = (Filtered_X.^2) + (Filtered_Y.^2);
     magnitude2 = sqrt(magnitude);
     bw = zeros (size(A,1), size(A,2));
+    
     %Non-Maximum Supression
     for i=2:size(A,1)-1
         for j=2:size(A,2)-1
@@ -70,6 +87,7 @@ function imgCannyEdge = canny(imgInput)
     end
     bw = bw.*magnitude2;
     % figure, imshow(bw);
+    
     %Hysteresis Thresholding
     ThreshLow = ThreshLow * max(max(bw));
     ThreshHigh = ThreshHigh * max(max(bw));
