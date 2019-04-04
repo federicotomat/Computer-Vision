@@ -127,12 +127,13 @@ figure, imshow(matEdge), title('Metodo semi-furbo del signor Matlab')
 
 imgInput = double(imgInput);
 %Value for Thresholding
-ThreshLow = 0.075;
-ThreshHigh = 0.175;
+%ThreshLow = 0.075;
+%ThreshHigh = 0.175;
     
+threshold = autoThreshold(imgInput);
 %First Method
-imgCanny1st = canny(imgInput, ThreshLow, ThreshHigh);
-figure, imshow(canny(imgInput, ThreshLow, ThreshHigh)), title('Metodo figo mio <3')
+imgCanny1st = canny(imgInput, threshold(1), threshold(2));
+figure, imshow(imgCanny1st), title('Metodo figo mio <3')
 
 %Second Methos
 imgCanny2nd = cannyEdgeDetector(imgInput, t1, t2);
