@@ -2,7 +2,7 @@
 % Function that implements the Laplacian of Gaussian Operator with a given
 % standard deviation sigma
 
-function laplacianMatrix = LaplacianOfGaussian(sigma)
+function laplacianMatrix = laplacianOfGaussian(sigma)
 %Spatial support should be the nearesr integer to 3*sigma
 
     spatialSupport = ceil(sigma*3); 

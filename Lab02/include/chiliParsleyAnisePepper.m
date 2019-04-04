@@ -1,5 +1,5 @@
 %% Hot chili Pepppaaahhh
-function transfImg = ChiliParsleyAnisePepper(srcImg, noiseDen)
+function transfImg = chiliParsleyAnisePepper(srcImg, noiseDen)
 
     for i=1:size(srcImg,3)
         [row,col] = size(srcImg(:,:,i));

@@ -1,3 +1,6 @@
+addpath('include');
+addpath('input');
+
 clear all
 close all
 clc
@@ -37,7 +40,7 @@ t2 = .3;
 %% Laplacian of Gaussian Operator:
 
 for i=1:length(sigma)
-    gaussian{i} = LaplacianOfGaussian(sigma(i));
+    gaussian{i} = laplacianOfGaussian(sigma(i));
     method{i} = 5;
 end
 
@@ -67,7 +70,7 @@ clear method
 
 %% Zero Crossing varing treshold
 
-ImgConvGaussianf = conv2(matrixFramer(imgInput, size(LaplacianOfGaussian(sigmaf),2)), LaplacianOfGaussian(sigmaf), 'same');
+ImgConvGaussianf = conv2(matrixFramer(imgInput, size(laplacianOfGaussian(sigmaf),2)), laplacianOfGaussian(sigmaf), 'same');
 ImgConvGaussianf = ImgConvGaussianf(floor(size(gaussian,2)/2):(end-floor(size(gaussian,2)/2)),floor(size(gaussian,2)/2):(end-floor(size(gaussian,2)/2)));
 
 for i=1:length(zeroCrossThreshold)

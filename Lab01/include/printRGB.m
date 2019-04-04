@@ -2,7 +2,7 @@
 % This function rotates all channels input image of desired
 % theta angle and return the rotated image.
 
-function PrintRGB(Img, RGB, String)
+function printRGB(Img, RGB, String)
 
     allBlack = zeros(size(RGB(:,:,1)));
     trasfImg1 = uint8(cat(3,  RGB(:,:,1),   allBlack,     allBlack));
