@@ -115,5 +115,4 @@ function imgCannyEdge = canny(imgInput, ThreshLow, ThreshHigh)
         end
     end
     imgCannyEdge = uint8(T_res.*255);
-  
 end
