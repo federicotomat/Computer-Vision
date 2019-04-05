@@ -13,11 +13,14 @@ edgeMatrix = zeros(row, col);
                     edgeMatrix(i,j) = 1;
                 %look for L<edge<H but with switched on pixel before him   
                 elseif (convMatrix(i,j) > L)
-                    if i>1 && j>1
-                        if edgeMatrix(i-1,j) == 1 && edgeMatrix(i,j-1) == 1 && edgeMatrix(i-1,j-1) == 1
+                    if i > 1 && j > 1
+                        %if edgeMatrix(i-1,j) == 1 && edgeMatrix(i,j-1) == 1 && edgeMatrix(i-1,j-1) == 1
+                        if convMatrix(i-1 ,j) > H && convMatrix(i, j-1) > H && convMatrix(i-1, j-1) > H
                           edgeMatrix(i,j) = 1;
                         end
                     end
+                else 
+                    edgeMatrix(i,j) = 0;
                 end
             end
         end
