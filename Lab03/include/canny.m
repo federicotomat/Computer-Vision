@@ -8,7 +8,7 @@
 % 6. Hystheresis Thresholding
 
 function imgCannyEdge = canny(imgInput, ThreshLow, ThreshHigh)
-  
+     
     % Gaussian Filter Coefficient
     B = [2,  4,  5,  4, 2; 
          4,  9, 12,  9, 4;

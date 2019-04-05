@@ -116,10 +116,7 @@ figure, imshow(imgSobelEdge), title('Edge detected Image with sobel gradient');
 imgInput = imread('boccadasse.jpg');
 %Show input image
 %figure, imshow(imgInput), title('Original image');
-
-if size(imgInput,3) > 1
-    imgInput = rgb2gray(imgInput);
-end
+imgInput = rgb2gray(imgInput);
 matEdge = edge(imgInput);
 figure, imshow(matEdge), title('Metodo semi-furbo del signor Matlab')
 
@@ -137,6 +134,7 @@ threshold = autoThreshold(imgInput);
 %First Method
 imgCanny1st = canny(imgInput, threshold(1), threshold(2));
 figure, imshow(imgCanny1st), title('Metodo figo mio <3')
+
 
 %Second Methos
 imgCanny2nd = cannyEdgeDetector(imgInput, t1, t2);
