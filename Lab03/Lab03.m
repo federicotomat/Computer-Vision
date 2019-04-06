@@ -20,7 +20,7 @@ end
 %% Parameters
 
 % Standard deviation for Gaussian
-sigma = {.35, .35, .35, .4, .5, .6};
+sigma = {.35, .35, .35, .4, .5, 1.4};
 sigmaf = .5;
 
 % Threshold for zero crossing
@@ -44,6 +44,7 @@ for i=1:length(sigma)
     method{i} = 5;
 end
 
+figure, surfc(laplacianOfGaussian(2)), axis on, shading flat;
 printFigure(length(sigma), 2, gaussian, method, ['Surf of Gaussin wth sigma = ',sigma])
 clear method
 
