@@ -1,8 +1,8 @@
 %% Canny Algorithm for Edge Detection. 
 % Steps/Algorithm Details : 
-% 1. Convolution with Gaussian Filter Coefficient 
+% 1. Convolution with Gaussian Filter Coefficient to smooth the image in order to remove the noise
 % 2. Convolution with Canny Filter for Horizontal and Vertical orientation 
-% 3. Calculating directions using atan2 
+% 3. Calculating directions using atan2, 2 and 3 to compute the gradient
 % 4. Adjusting to nearest 0, 45, 90, and 135 degree 
 % 5. Non-Maximum Suppression 
 % 6. Hystheresis Thresholding
@@ -10,14 +10,15 @@
 function imgCannyEdge = canny(imgInput, ThreshLow, ThreshHigh)
      
     % Gaussian Filter Coefficient
-    B = [2,  4,  5,  4, 2; 
-         4,  9, 12,  9, 4;
-         5, 12, 15, 12, 5;
-         4,  9, 12,  9, 4;
-         2,  4,  5,  4, 2];
-     
-    B = 1/159.* B;
+%     B = [2,  4,  5,  4, 2; 
+%          4,  9, 12,  9, 4;
+%          5, 12, 15, 12, 5;
+%          4,  9, 12,  9, 4;
+%          2,  4,  5,  4, 2];
+%      
+%     B = 1/159.* B
     
+    B = fspecial('gaussian', 5, 1.4);
     % Convolution of image by Gaussian Coefficient
     A = conv2(imgInput, B, 'same');
     

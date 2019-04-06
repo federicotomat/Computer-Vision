@@ -21,7 +21,7 @@ function edgeMatrix = hysteresisThresolding(H, L, convMatrix)
                         end
                             
                     elseif convMatrix(i-1,j-1) > H
-                        if convMatrix(i+1,j+1>L
+                        if convMatrix(i+1,j+1)>L
                             edgeMatrix(i,j) = 1;
                         end  
                            
