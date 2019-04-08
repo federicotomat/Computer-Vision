@@ -43,9 +43,9 @@ for i=1:length(sigma)
     method{i} = 5;
 end
 
-% figure, surfc(laplacianOfGaussian(sigma(3))), axis on, shading flat;
-% printFigure(length(sigma), 2, gaussian, method, '')
-% clear method
+figure, surfc(laplacianOfGaussian(sigma(3))), axis on, shading flat;
+printFigure(length(sigma), 2, gaussian, method, '')
+clear method
 
 %% Convolve Gaussian with Original Image
     
@@ -55,8 +55,8 @@ for i=1:length(sigma)
     method{i} = 1;
 end
 
-% printFigure(length(sigma), 2, ImgConvGaussian , method, 'c')
-% clear method
+printFigure(length(sigma), 2, ImgConvGaussian , method, '')
+clear method
 
 %% Zero Crossing varing sigma
 
@@ -65,8 +65,8 @@ for i=1:length(sigma)
     method{i} = 1;
 end
  
-% printFigure(length(sigma), 2, my_edge , method, 'c');
-% clear method
+printFigure(length(sigma), 2, my_edge , method, '');
+clear method
 
 %% Zero Crossing varing treshold
 
@@ -78,8 +78,8 @@ for i=1:length(zeroCrossThreshold)
     method{i} = 1;
 end
 
-% printFigure(length(zeroCrossThreshold), 2, my_edge , method, 'c');
-% clear method
+printFigure(length(zeroCrossThreshold), 2, my_edge , method, '');
+clear method
 
 %% Best Zero crossing
 
@@ -100,7 +100,7 @@ matEdgeC = edge(double(imgInput),'Canny');
 
 %% Error analisys
 
-printFigure(2, 1, {matEdgeC, imgCanny} , {1 1}, {'Matalb Marr-Hildreth implementation';'Our Marr-Hildreth implementation'});
+printFigure(2, 1, {matEdgeC, imgCanny} , {1 1}, ['',]);
 errorAnalisys(matEdgeC, imgCanny);
 
 printFigure(2, 1,  {matEdgeL, ZC} , {1 1}, 'Edge implemantation vs our implementation-Canny');

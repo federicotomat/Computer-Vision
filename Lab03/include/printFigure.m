@@ -5,18 +5,23 @@ figure()
    for i = 1:numberImg
        switch method{i}
             case 1 % imagesc
+                title(title{i})
                 subplot(numberRow, numberImg/numberRow, i); imagesc(double(inputImg{i})); colormap gray; axis on;
            
             case 2 % istrogramma
+                title(title{i})
                 subplot(numberRow, numberImg/numberRow, i); imhist(uint8(inputImg{i}), 256); colormap gray; axis on;
                 
             case 3 % imshow
+                title(title{i})
                 subplot(numberRow, numberImg/numberRow, i); imshow(inputImg{i}); colormap gray; axis on;
                 
             case 4 % mesh
+                title(title{i})
                 subplot(numberRow, numberImg/numberRow, i); mesh(inputImg{i}); colormap gray; axis on;
                 
             case 5 % surf
+                title(title{i})
                 subplot(numberRow, numberImg/numberRow, i); surf(inputImg{i}); axis on;
                 
             otherwise

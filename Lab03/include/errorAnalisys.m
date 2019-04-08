@@ -16,5 +16,6 @@ function error_percentage = errorAnalisys(mat1, mat2)
     end
 
     error_percentage = error_count/(size(mat1,2)*size(mat1,1))*100;
-    figure, imshowpair(mat1, mat2), title('Comparison');
+    disp(error_percentage)
+    figure, imshowpair(mat1, mat2);
 end
