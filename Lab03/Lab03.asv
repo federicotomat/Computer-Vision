@@ -40,39 +40,33 @@ t = autoThreshold(imgInput);
 
 for i=1:length(sigma)
     gaussian{i} = laplacianOfGaussian(sigma(i));
-    titles{i} = strcat(' Laplacian of Gaussian with sigma =',{' '}, num2str(sigma(i)) );
     method{i} = 5;
 end
 
 % figure, surfc(laplacianOfGaussian(sigma(3))), axis on, shading flat;
-printFigure(length(sigma), 2, gaussian, method, titles, 1);
-% clear method;
-% clear titles;
+% printFigure(length(sigma), 2, gaussian, method, '')
+% clear method
 
 %% Convolve Gaussian with Original Image
     
-for i = 1:length(sigma)
+for i=1:length(sigma)
     ImgConvGaussian{i} = conv2(imgInput, gaussian{i}, 'same');%conv2(matrixFramer(imgInput, size(gaussian{i},2)), gaussian{i}, 'same');
     %ImgConvGaussian{i} = ImgConvGaussian{i}(floor(size(gaussian{i},2)/2):(end-floor(size(gaussian{i},2)/2)),floor(size(gaussian{i},2)/2):(end-floor(size(gaussian{i},2)/2)));
-    titles{i} = strcat('Original convoled with LoG with sigma =', {' '}, num2str(sigma(i)) );
     method{i} = 1;
 end
 
-printFigure(length(sigma), 2, ImgConvGaussian , method, titles, 1);
-% clear method;
-% clear titles;
+% printFigure(length(sigma), 2, ImgConvGaussian , method, 'c')
+% clear method
 
 %% Zero Crossing varing sigma
 
 for i=1:length(sigma)
     my_edge{i}= zeroCrossingEdgeDedector(zeroCrossThresholdF, ImgConvGaussian{i}) ;
-    titles{i} = strcat('Zero Crossing with sigma =', {' '}, num2str(sigma(i)) );
     method{i} = 1;
 end
  
-printFigure(length(sigma), 2, my_edge , method, titles, 1);
-% clear method;
-% clear titles;
+% printFigure(length(sigma), 2, my_edge , method, 'c');
+% clear method
 
 %% Zero Crossing varing treshold
 
@@ -81,22 +75,20 @@ ImgConvGaussianf = ImgConvGaussianf(floor(size(gaussian,2)/2):(end-floor(size(ga
 
 for i=1:length(zeroCrossThreshold)
     my_edge{i} = zeroCrossingEdgeDedector(zeroCrossThreshold(i), ImgConvGaussianf) ;
-    titles{i} = strcat('Zero Crossing with sigma =',{' '}, num2str(sigmaf),{' '}, 'and threshold =',{' '}, num2str(zeroCrossThreshold(i)));
     method{i} = 1;
 end
 
-printFigure(length(zeroCrossThreshold), 2, my_edge , method, titles, 1);
-% clear method;, 
-% clear titles;
+% printFigure(length(zeroCrossThreshold), 2, my_edge , method, 'c');
+% clear method
 
 %% Best Zero crossing
 
-ZC = zeroCrossingEdgeDedector(zeroCrossThresholdF, ImgConvGaussian{1});
+ZC=zeroCrossingEdgeDedector(zeroCrossThresholdF, ImgConvGaussian{1});
 
 %% Canny Edge Detector method
     
 imgCanny = canny(imgInput, t(1), t(2));
-% figure, imshow(imgCanny);
+%figure, imshow(imgCanny);
 
 %% Matlab function method
 
@@ -108,8 +100,8 @@ matEdgeC = edge(double(imgInput),'Canny');
 
 %% Error analisys
 
-printFigure(2, 1, {matEdgeC, imgCanny} , {3 3}, {'Matalb Marr-Hildreth implementation', 'Our Marr-Hildreth implementation'}, 1);
-figure(), errorAnalisys(matEdgeC, imgCanny);
+printFigure(2, 1, {matEdgeC, imgCanny} , {1 1}, {'Matalb Marr-Hildreth implementation';'Our Marr-Hildreth implementation'});
+errorAnalisys(matEdgeC, imgCanny);
 
-printFigure(2, 1,  {matEdgeL, ZC} , {3 3}, {'Edge implementation', 'Our Canny implementation'}, 1);
-figure(), errorAnalisys(matEdgeL, ZC);
+printFigure(2, 1,  {matEdgeL, ZC} , {1 1}, 'Edge implemantation vs our implementation-Canny');
+errorAnalisys(matEdgeL, ZC);
