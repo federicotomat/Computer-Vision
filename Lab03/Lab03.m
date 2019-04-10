@@ -44,7 +44,7 @@ for i=1:length(sigma)
     method{i} = 5;
 end
 
-% figure, surfc(laplacianOfGaussian(sigma(3))), axis on, shading flat;
+figure, surfc(laplacianOfGaussian(5)), axis on, shading flat;
 printFigure(length(sigma), 2, gaussian, method, titles, 1);
 % clear method;
 % clear titles;

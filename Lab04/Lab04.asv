@@ -2,8 +2,11 @@ addpath('include');
 addpath('input');
 
 clear all
-clc
 close all
+clc
+
+imgDetectByHue = colorDetectionByHue(imread('ur_c_s_03a_01_L_0381.png'), [0.5 1, 0.1);
+figure, imshow(imgDetectByHue.red);
 
 %% Load image
 for i = 1:6
