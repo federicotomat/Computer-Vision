@@ -2,14 +2,14 @@
 % Se si desidera anche salvare l'immagine, aggiungere come parametro alla
 % funzione il titolo e scommentare le ultime righe, ho aggiunto una flag
 % per dire alla stampa se fare o meno il full screen, flag = 1 sta per
-% true, altri casi è false
+% true, altri casi ï¿½ false
 
 function printFigure(numberImg, numberRow, inputImg, method, subplotTitle, flag)
    if flag == 1
        figure('units','normalized','outerposition',[0 0 1 1]),
    else 
    end
-
+	figure()
    for i = 1:numberImg
        switch method{i}
             case 1 % imagesc
@@ -32,7 +32,7 @@ function printFigure(numberImg, numberRow, inputImg, method, subplotTitle, flag)
             return
        end
    end
-   
+   hold off
    %fig = figure;
    %fname = /where/you/want/to/save
    %figname = ['fig_', saveTitle, '.jpg'];

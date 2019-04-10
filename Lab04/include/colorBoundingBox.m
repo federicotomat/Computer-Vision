@@ -2,35 +2,37 @@
 % Display the images corresponding to the segmentation and the 
 % related centroid and bounding box of area greater than minClusterArea.
 
-function imgWithBox = colorBoundingBox(imgInput, color, minClusterArea, type)
+function [imgWithBox,F] = colorBoundingBox(imgInput, color, minClusterArea, type)
     if nargin > 0
-        imgDetectByHue = colorDetection(imgInput, [0.5 1], [0.5 1]);
+        imgDetect = colorDetection(imgInput, [0.5 1], [0.5 1]);
         switch color        
             case 'black'
-                myVar = imgDetectByHue.black;
+                myVar = imgDetect.black;
             case 'white'
-                myVar = imgDetectByHue.white;
+                myVar = imgDetect.white;
             case 'red'
-                myVar = imgDetectByHue.red;
+                myVar = imgDetect.red;
             case 'yellow'
-                myVar = imgDetectByHue.yellow;
+                myVar = imgDetect.yellow;
             case 'green'
-                myVar = imgDetectByHue.green;
+                myVar = imgDetect.green;
             case 'cyan'
-                myVar = imgDetectByHue.cyan;
+                myVar = imgDetect.cyan;
             case 'blue'
-                myVar = imgDetectByHue.blue;
+                myVar = imgDetect.blue;
             case 'magenta'
-                myVar = imgDetectByHue.magenta;
+                myVar = imgDetect.magenta;
+            case 'manual'
+                myVar =  detectionByHue(imgInput);
             otherwise
-                msg = 'Chosse a valid method';
+                msg = 'Choose a valid method';
                 error(msg);
         end
               
         if type == 0
-            figure(), imshow(imgInput), colormap gray;
+            figure('visible', 'off'), imshow(imgInput), colormap gray;
         else 
-            figure(), imshow(myVar), colormap gray, title 'Bravi tutti';
+            figure('visible', 'off'), imshow(myVar), colormap gray, title 'Bravi tutti';
         end
         segmentation = regionprops(myVar, 'Area', 'Centroid', 'BoundingBox');    
         
@@ -46,7 +48,11 @@ function imgWithBox = colorBoundingBox(imgInput, color, minClusterArea, type)
                 hold on
             end
         end
-        imgWithBox = frame2im(getframe);
+        % Il problema e' qua bisogna riusicire a metterlo solo nella
+        % modalita gif. Si puo anche provare di fare movie alla fine
+        F=getframe;
+        imgWithBox = frame2im(F);
+        
         close
     end
 end
