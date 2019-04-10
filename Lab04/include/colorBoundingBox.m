@@ -4,7 +4,7 @@
 
 function imgWithBox = colorBoundingBox(imgInput, color, minClusterArea, type)
     if nargin > 0
-        imgDetectByHue = colorDetectionByHue(imgInput, [0.5 1], [0.5 1]);
+        imgDetectByHue = colorDetection(imgInput, [0.5 1], [0.5 1]);
         switch color        
             case 'black'
                 myVar = imgDetectByHue.black;
@@ -23,13 +23,14 @@ function imgWithBox = colorBoundingBox(imgInput, color, minClusterArea, type)
             case 'magenta'
                 myVar = imgDetectByHue.magenta;
             otherwise
-                disp('Sei un trippone');
+                msg = 'Chosse a valid method';
+                error(msg);
         end
               
         if type == 0
-            figure, imshow(imgInput), colormap gray, title 'Bravi tutti';
+            figure(), imshow(imgInput), colormap gray;
         else 
-            figure, imshow(myVar), colormap gray, title 'Bravi tutti';
+            figure(), imshow(myVar), colormap gray, title 'Bravi tutti';
         end
         segmentation = regionprops(myVar, 'Area', 'Centroid', 'BoundingBox');    
         

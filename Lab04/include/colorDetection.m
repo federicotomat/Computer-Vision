@@ -10,7 +10,7 @@
 %  magenta = 300
 
     
-function imgDetectByHue = colorDetectionByHue(inputImg, sThresh, vThresh)
+function imgDetectByHue = colorDetection(inputImg, sThresh, vThresh)
     if nargin > 0
         if nargin < 3
             sThresh = [0.1 1];
@@ -21,7 +21,7 @@ function imgDetectByHue = colorDetectionByHue(inputImg, sThresh, vThresh)
         end
 
         hsvI = rgb2hsv(inputImg);
-        hueI = round(hsvI(:,:,1)*360); %Arrotondo all'intero più vicino
+        hueI = round(hsvI(:,:,1)*360); %Arrotondo all'intero piï¿½ vicino
         satI = hsvI(:,:,2);
         valI = hsvI(:,:,3);
         threshI = (satI >= sThresh(1)) & (satI <= sThresh(2)) & (valI >= vThresh(1)) & (valI <= vThresh(2));
