@@ -1,4 +1,4 @@
-%% Color Detection By Hue value
+%% Color Detection By Hue valujkjmmnnn  e
 % Recognize the zones from image using hue with saturation and threshold value
 
 % Hue (degree) for different color:
