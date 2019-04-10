@@ -24,7 +24,9 @@ for i=1:6
               ['Green for image number ' num2str(375+i)], ['Blue for image number ' num2str(375+i)]};
     printFigure(6, 3, {imgHSV(:,:,1,i),imgHSV(:,:,2,i),imgHSV(:,:,3,i),...
         imgRGB(:,:,1,i),imgRGB(:,:,2,i),imgRGB(:,:,3,i)} , {1 1 1 1 1 1}, title{i}, 1)
-    
+    printFigure(6, 3, {imgHSI(:,:,1,i),imgRGB(:,:,1,i),imgHSI(:,:,2,i),imgRGB(:,:,2,i),...
+        imgHSI(:,:,3,i),imgRGB(:,:,2,i),imgRGB(:,:,3,i)} , {1 1 1 1 1 1}, {title{i}(1),title{i}(4),title{i}(2),...
+        title{i}(5),title{i}(3),title{i}(6)}, 1)    
 end
     
 for i=1:3
