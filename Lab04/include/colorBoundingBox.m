@@ -2,7 +2,7 @@
 % Display the images corresponding to the segmentation and the 
 % related centroid and bounding box of area greater than minClusterArea.
 
-function [imgWithBox,F] = colorBoundingBox(imgInput, color, minClusterArea, type)
+function [imgWithBox,F] = colorBoundingBox(imgInput, color, minClusterArea, type,highTresh, lowTresh)
     if nargin > 0
         imgDetect = colorDetection(imgInput, [0.5 1], [0.5 1]);
         switch color        
@@ -23,7 +23,7 @@ function [imgWithBox,F] = colorBoundingBox(imgInput, color, minClusterArea, type
             case 'magenta'
                 myVar = imgDetect.magenta;
             case 'manual'
-                myVar =  detectionByHue(imgInput);
+                myVar =  detectionByHue(imgInput,highTresh, lowTresh);
             otherwise
                 msg = 'Choose a valid method';
                 error(msg);

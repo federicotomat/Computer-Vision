@@ -1,7 +1,7 @@
 %% Select the area of the picture and to compute std and Mean
 
-function [highTresh, lowtresh] = manualTrehsold(imgInput)
-    
+function [highTresh, lowTresh] = manualTrehsold(imgInput)
+    figure()
     imshow(imgInput)
     uiwait(helpdlg('Select the area to track.'));  
     rect = getrect;
@@ -22,7 +22,7 @@ function [highTresh, lowtresh] = manualTrehsold(imgInput)
     
     %define high treshold e lower treshold
     highTresh = m + .1*s;
-    lowtresh= m - .1*s;
+    lowTresh= m - .1*s;
     
 
 end
