@@ -15,8 +15,10 @@ function [highTresh, lowTresh] = manualTrehsold(imgInput)
     
     %evaluate mean and standard deviation for Hue in the selected area
     imgHsv = rgb2hsv(imgInput);
+    imgHsv = medfilt2(imgHsv(:,:,1));
+
     areaToEvaluate = imgHsv(y1:y2, x1:x2, 1);
-    
+   
     m = mean2(areaToEvaluate);
     s = std2(areaToEvaluate);
     
