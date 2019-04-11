@@ -7,6 +7,8 @@ chHue = imgHsv(:,:,1);
 chSat = imgHsv(:,:,2);
 chVal = imgHsv(:,:,3);
 
-hueDetec = chHue > lowTresh & chHue < highTresh & chSat > 0 & chVal > 0;
-imshow(hueDetec)
+hueDetec = chHue > lowTresh(1) & chHue < highTresh(1) &...
+           chSat > lowTresh(2) & chSat < highTresh(2) &...
+           chVal > lowTresh(3) & chVal < highTresh(3);
+
 end

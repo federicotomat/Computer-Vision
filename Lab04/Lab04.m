@@ -10,15 +10,17 @@ clc
 for i = 1:6
     name = strcat('ur_c_s_03a_01_L_0', num2str(375+i),'.png');
     imgRGB(:,:,:,i) = imread(name);
-    
 end
+
+clear name
 
 %% Paramether
 
 imgType = 0;
 method ='red';
 
-FileName = 'images/Gifs/auto_red.gif';
+FileName = 'images/Gifs/auto_manual.gif';
+
 delayTime = 0.2;
 
 %% RGB and HSV
@@ -61,4 +63,6 @@ delayTime = 0.2;
 %% Create gif
 %by default the gif runs 100 times
 
-makeGif(imgRGB, delayTime, FileName, 'manual',0);
+makeGif(imgRGB, delayTime, FileName2, 'manual',0);
+
+
