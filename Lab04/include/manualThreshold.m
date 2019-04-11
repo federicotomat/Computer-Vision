@@ -1,6 +1,6 @@
 %% Select the area of the picture and to compute std and Mean
 
-function [highTresh, lowTresh] = manualTrehsold(imgInput)
+function [sThresh, vThresh, hThresh] = manualThreshold(imgInput)
     figure()
     imshow(imgInput)
     uiwait(helpdlg('Select the area to track.'));  
@@ -19,13 +19,15 @@ function [highTresh, lowTresh] = manualTrehsold(imgInput)
     for i=1:3
         tmp = medfilt2(imgHsv(:,:,i));
         areaToEvaluate(:,:,i) = tmp(y1:y2, x1:x2);
-        m(i) = mean2(areaToEvaluate(:,:,i));
-        s(i) = std2(areaToEvaluate(:,:,i));
+        medianArea(i) = mean2(areaToEvaluate(:,:,i));
+        standardDevArea(i) = std2(areaToEvaluate(:,:,i));
     end
     
     %define high treshold e lower treshold
-    highTresh = m + 1*s;
-    lowTresh= m - 1*s;
-    
-
+    highTresh = medianArea + 1 * standardDevArea;
+    lowTresh = medianArea - 1 * standardDevArea;
+      
+    sThresh = [lowTresh(2), highTresh(2)];
+    vThresh = [lowTresh(3), highTresh(3)];
+    hThresh = [lowTresh(1), highTresh(1)];
 end

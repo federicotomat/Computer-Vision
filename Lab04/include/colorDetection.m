@@ -1,8 +1,8 @@
-%% Color Detection By Hue valujkjmmnnn  e
+%% Color Detection By Hue
 % Recognize the zones from image using hue with saturation and threshold value
     
-function imgDetect = colorDetection(inputImg, sThresh, vThresh)
-    if nargin > 0
+function imgDetect = colorDetection(inputImg, sThresh, vThresh, hThresh)
+    if nargin > 0 && nargin < 4
         if nargin < 3
             sThresh = [0.1 1];
             vThresh = [0.1 1];
@@ -26,5 +26,18 @@ function imgDetect = colorDetection(inputImg, sThresh, vThresh)
         imgDetect.blue = ((hueI > 210) & (hueI <= 270)) & threshI;
         imgDetect.magenta = ((hueI > 270) & (hueI <= 330)) & threshI;
 
-    end
+    elseif nargin < 5
+        sThresh = [min(sThresh) max(sThresh)];
+        vThresh = [min(vThresh) max(vThresh)];
+        hThresh = [min(hThresh) max(hThresh)];
+        
+        hsvI = rgb2hsv(inputImg);
+        chHue = hsvI(:,:,1);
+        chSat = hsvI(:,:,2);
+        chVal = hsvI(:,:,3);
+
+        imgDetect.manual = chHue > hThresh(1) & chHue < hThresh(2) &...
+                           chSat > sThresh(1) & chSat < sThresh(2) &...
+                           chVal > vThresh(1) & chVal < vThresh(2);
+    end  
 end

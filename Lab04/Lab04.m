@@ -19,7 +19,7 @@ clear name
 imgType = 0;
 method ='red';
 
-FileName = 'images/Gifs/auto_manual.gif';
+FileName = 'images/gifs/auto_manual.gif';
 
 delayTime = 0.2;
 
@@ -61,8 +61,8 @@ delayTime = 0.2;
 % close all;
 
 %% Create gif
-%by default the gif runs 100 times
+% by default the gif runs 100 times
 
-makeGif(imgRGB, delayTime, FileName2, 'manual',0);
+makeGif(imgRGB, delayTime, FileName, 'manual', 0);
 
 
