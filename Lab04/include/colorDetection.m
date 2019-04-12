@@ -1,5 +1,7 @@
 %% Color Detection By Hue
-% Recognize the zones from image using hue with saturation and threshold value
+%
+%Depending of the number if input perform a color reconiction with manual
+%or fixed threshold on Hue
     
 function imgDetect = colorDetection(inputImg, sThresh, vThresh, hThresh)
     if nargin > 0 && nargin < 4

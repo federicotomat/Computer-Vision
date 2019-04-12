@@ -19,7 +19,7 @@ clear name
 imgType = 0;
 method ='red';
 
-FileName = 'images/gifs/auto_manual.gif';
+FileName = 'images/gifs/car_red_bw.gif';
 
 delayTime = 0.2;
 

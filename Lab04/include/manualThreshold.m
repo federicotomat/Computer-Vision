@@ -1,4 +1,8 @@
 %% Select the area of the picture and to compute std and Mean
+%
+%Select a rectangle on the image. Evaluate the mean and the std deviation
+%of Hue the selected area. For the Value and Saturation a fixed couple of
+%threshold is chosen. 
 
 function [sThresh, vThresh, hThresh] = manualThreshold(imgInput)
     figure()
@@ -28,6 +32,6 @@ function [sThresh, vThresh, hThresh] = manualThreshold(imgInput)
     lowTresh = medianArea - 1 * standardDevArea;
       
     sThresh = [lowTresh(2), highTresh(2)];
-    vThresh = [lowTresh(3), highTresh(3)];
-    hThresh = [lowTresh(1), highTresh(1)];
+    vThresh = [0.5,1];%[lowTresh(3), highTresh(3)];
+    hThresh = [0.5,1];%[lowTresh(1), highTresh(1)];
 end
