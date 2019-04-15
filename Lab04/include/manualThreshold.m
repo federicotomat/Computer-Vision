@@ -5,11 +5,12 @@
 %threshold is chosen. 
 
 function [sThresh, vThresh, hThresh] = manualThreshold(imgInput)
+    
     figure()
     imshow(imgInput)
     uiwait(helpdlg('Select the area to track.'));  
     rect = getrect;
-    
+    close 
     
     %extreme poitn of rectangle
     x1 =ceil(rect(1));
@@ -31,7 +32,8 @@ function [sThresh, vThresh, hThresh] = manualThreshold(imgInput)
     highTresh = medianArea + 1 * standardDevArea;
     lowTresh = medianArea - 1 * standardDevArea;
       
-    sThresh = [lowTresh(2), highTresh(2)];
+    hThresh = [lowTresh(1), highTresh(1)];
+    sThresh = [0.5,1];%[lowTresh(2), highTresh(2)];
     vThresh = [0.5,1];%[lowTresh(3), highTresh(3)];
-    hThresh = [0.5,1];%[lowTresh(1), highTresh(1)];
+    
 end
