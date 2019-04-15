@@ -6,10 +6,10 @@
 
 function printFigure(numberImg, numberRow, inputImg, method, subplotTitle, flag)
    if flag == 1
-       figure('units','normalized','outerposition',[0 0 1 1]),
+       figure('units', 'normalized','outerposition',[0 0 1 1])
    else 
+       figure()
    end
-	figure()
    for i = 1:numberImg
        switch method{i}
             case 1 % imagesc
@@ -32,7 +32,7 @@ function printFigure(numberImg, numberRow, inputImg, method, subplotTitle, flag)
             return
        end
    end
-   hold off
+   % hold off
    %fig = figure;
    %fname = /where/you/want/to/save
    %figname = ['fig_', saveTitle, '.jpg'];
