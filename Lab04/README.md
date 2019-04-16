@@ -1,3 +1,5 @@
-# Lab04
+# Colos-based Segmentation
 
-<em></em>
+The region in which an object is located can be described both by edge and color. This second approach is based on the assumption that image regions have homogeneous characteristics (e.g. intensity, color) that are different from one to the other. The result is a segmentation of the image in different regions (or blobs) characterized by the same properties, since the color is well represented by hue parameter. The aim is to select each pixels in the given image that has the requested color, or at lest in the specified range. From this operation a logical image is obtained with selected pixels turned on (white) and discarded turned off (black).
+
+First of all we separate color information (chroma) from intensity or lighting (luma). Since value is separated, you can construct a histogram or thresholding rules using only saturation and hue. This in theory will work regardless of lighting changes in the value channel. In practice it is just a nice improvement. Even by singling out only the hue you still have a very meaningful representation of the base color that will likely work much better than $RGB$. The end result is a more robust color thresholding over simpler parameters.
