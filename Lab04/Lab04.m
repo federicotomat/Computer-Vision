@@ -57,12 +57,12 @@ printFigure(6, 3, {imgRGB(:,:,i,1),imgRGB(:,:,i,2),imgRGB(:,:,i,3),...
                                                                                                                                                                 
 end
 
-% uiwait(helpdlg('Select ok to continue, all images will be closed.'));
-% close all;
+uiwait(helpdlg('Select ok to continue, all images will be closed.'));
+close all;
 
 %% Create gif
 % by default the gif runs 100 times
 
-% makeGif(imgRGB, delayTime, FileName, 'manual', 0);
+makeGif(imgRGB, delayTime, FileName, 'manual', 0);
 
 
