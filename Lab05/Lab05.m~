@@ -1,0 +1,19 @@
+addpath('include');
+addpath('input');
+
+clear all
+close all
+clc
+%% Paramether
+% xLenght = 112;
+% yLenght = 100;
+
+%% Load image
+
+for i = 1:6
+    name = strcat('ur_c_s_03a_01_L_0', num2str(375+i),'.png');
+    imgRGB(:,:,:,i) = imread(name);
+    imgGray(:,:,:,i) = double(rgb2gray(imgRGB(:,:,:,i)));
+    selectArea(imgGray(:,:,i))
+end
+
