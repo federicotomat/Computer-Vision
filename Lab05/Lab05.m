@@ -9,10 +9,9 @@ addpath('input');
 
 %% Create write video object
 
-v = VideoWriter('Images/Video/car.mp4');
+v = VideoWriter('Images/Video/car.avi');
 v.FrameRate = 6;
 v.Quality = 95;
-
 
 open(v);
 
@@ -62,7 +61,6 @@ close(v)
 area = double(deltaX * deltaY);
 areaFactor = .1:.2:8;
 
-
 c = 1;
 for k = areaFactor
     
@@ -90,6 +88,8 @@ hold on
 p = polyfit(npixels, t, 1);
 FX = polyval(p, npixels);
 plot(npixels, FX)
+xlabel('Pixels number')
+ylabel('Time taken (s)')
 
 %% Creation of the gif
 

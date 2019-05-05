@@ -7,7 +7,7 @@ uiwait(helpdlg('Select the area to track.'));
 rect = getrect;
 close
 
-%extreme poitn of rectangle
+%extreme point of rectangle
 x1 = ceil(rect(1));
 x2 = x1 + ceil(rect(3));
 y1 =  ceil(rect(2));
