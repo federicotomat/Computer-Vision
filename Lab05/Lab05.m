@@ -7,6 +7,16 @@ clc
 addpath('include');
 addpath('input');
 
+%% Create write video object
+
+v = VideoWriter('Images/Video/car.mp4');
+v.FrameRate = 6;
+v.Quality = 95;
+
+
+open(v);
+
+
 %% Load image
 
 for i = 1:6
@@ -29,25 +39,23 @@ for i = 1:6
         selectedArea = imgGray((Oy - (.5 * deltaY)): (Oy + (.5 * deltaY))...
             , (Ox - (.5 * deltaX)): (Ox + (.5 * deltaX)),i);
     end
-%     
-%     
-%      [xmin, ymin, width, height,~] = ncc(imgGray(:,:,i), selectedArea);
-%      
-%      figure('visible', 'off'),
-%      imshow(imgRGB(:,:,:,i)), title(num2str(375+i));
-%      hold on 
-%      plot(xmin + width, ymin + height, 'or');
-%      drawrectangle('Position',[xmin+1, ymin+1, width, height]);
-%      
-%      F(i) = getframe;
+    
+    
+     [xmin, ymin, width, height,~] = ncc(imgGray(:,:,i), selectedArea);
+     
+     figure('visible', 'off'),
+     imshow(imgRGB(:,:,:,i)), title(num2str(375+i));
+     hold on 
+     plot(xmin + width, ymin + height, 'or');
+     drawrectangle('Position',[xmin+1, ymin+1, width, height]);
+     
+     F(i) = getframe;
+     writeVideo(v,F(i));
+
+
 end
 
-% cycleNumber = 100;
-% figure()
-% imshow(frame2im(F(1)));
-% movie(F, cycleNumber, 6);
-% hold on
-
+close(v)
 
 %% Evaluation of time taken
 
@@ -83,3 +91,10 @@ p = polyfit(npixels, t, 1);
 FX = polyval(p, npixels);
 plot(npixels, FX)
 
+%% Creation of the gif
+
+cycleNumber = 100;
+figure()
+imshow(frame2im(F(1)));
+movie(F, cycleNumber, 6);
+hold on
