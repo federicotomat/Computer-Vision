@@ -49,9 +49,7 @@ for i = 1:6
      drawrectangle('Position',[xmin+1, ymin+1, width, height]);
      
      F(i) = getframe;
-     writeVideo(v,F(i));
-
-
+     %writeVideo(v,F(i));
 end
 
 close(v)
