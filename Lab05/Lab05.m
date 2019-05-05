@@ -19,8 +19,13 @@ for i = 1:6
         
         Ox = floor(.5 * (x2-x1)) + x1;
         Oy = floor(.5 * (y2-y1)) + y1;
+        
         deltaX =  (x2-x1);
+        deltaX = int64(deltaX);
+        
         deltaY =  (y2-y1);
+        deltaY = int64(deltaY);
+        
         selectedArea = imgGray((Oy - (.5 * deltaY)): (Oy + (.5 * deltaY))...
             , (Ox - (.5 * deltaX)): (Ox + (.5 * deltaX)),i);
     end
@@ -45,23 +50,36 @@ end
 
 
 %% Evaluation of time taken
-area = (deltaX * deltaY);
+
+area = double(deltaX * deltaY);
 areaFactor = .1:.2:8;
 
 
 c = 1;
 for k = areaFactor
+    
     deltaX = ceil(k * (x2-x1));
     deltaX = int64(deltaX);
+    
     deltaY = ceil(k * (y2-y1));
     deltaY = int64(deltaY);
+    
     selectedArea = imgGray((Oy - (.5 * deltaY)): (Oy + (.5 * deltaY))...
         , (Ox - (.5 * deltaX)): (Ox + (.5 * deltaX)), 6);
+    
     [xmin, ymin, width, height,timeTaken] = ncc(imgGray(:,:,6), selectedArea);
-    time(c) = timeTaken;
-    n = area * k;
+    
+    t(c) = timeTaken;
+    n = area * k * k;
     npixels(c) = n;
+    
     c = c + 1;
 end
 
-plot(npixels, time)
+figure()
+scatter(npixels, t)
+hold on
+p = polyfit(npixels, t, 1);
+FX = polyval(p, npixels);
+plot(npixels, FX)
+
