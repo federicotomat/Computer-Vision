@@ -1,4 +1,13 @@
 %% Select Area
+%
+%Function asking user to select a area via getrect function.
+%
+%Input:
+%-imgRGB: image in RGB scale on which perferom the selction
+%
+%Output:
+%-x1,x2,y2,y4: cordinates of extreme point of the selected rectangle
+
 function [x1,x2,y1,y2] = selectArea(imgRGB)
 
 figure()
