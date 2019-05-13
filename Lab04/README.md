@@ -1,4 +1,4 @@
-# Colos-based Segmentation
+# Color-based Segmentation
 
 The region in which an object is located can be described both by edge and color. This second approach is based on the assumption that image regions have homogeneous characteristics (e.g. intensity, color) that are different from one to the other. The result is a segmentation of the image in different regions (or blobs) characterized by the same properties, since the color is well represented by hue parameter. The aim is to select each pixels in the given image that has the requested color, or at lest in the specified range. From this operation a logical image is obtained with selected pixels turned on (white) and discarded turned off (black).
 

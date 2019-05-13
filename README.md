@@ -5,6 +5,8 @@
 2. [Image filtering and Fourier Transform](https://github.com/federicotomat/Computer-Vision/tree/master/Lab02)
 3. [Edge detection](https://github.com/federicotomat/Computer-Vision/tree/master/Lab03)
 4. [Color-based Segmentation](https://github.com/federicotomat/Computer-Vision/tree/master/Lab04)
+5. [Normalized cross correlation](https://github.com/federicotomat/Computer-Vision/tree/master/Lab05)
+6. [Homographies](https://github.com/federicotomat/Computer-Vision/tree/master/Lab06)
 
 ## Authors
 | Name | E-mail |
