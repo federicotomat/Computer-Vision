@@ -1,3 +1,5 @@
+clear all;
+
 folder = '../imagesMosaic/';
 Npoints = 8; % put here the number of points you want to use
 
