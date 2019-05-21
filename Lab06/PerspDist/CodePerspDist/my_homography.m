@@ -1,6 +1,8 @@
 
 function [ H, A ] = my_homography( X1, X2 )
 
+[X1, T1] = normalise2dpts(X1);
+[X2, T2] = normalise2dpts(X2);
 
 A = zeros(size(X1,2)*2, 9);
 
@@ -22,9 +24,10 @@ for ii=1:size(X1,2)
     
 end
 
-    [U,D,V] = svd(A,0);
+    [~,~,V] = svd(A,0);
     H = reshape(V(:,9),3,3);
     H = H';
-
+    H = (H/T2) * T1;
+   
 end
 

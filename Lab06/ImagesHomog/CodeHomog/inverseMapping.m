@@ -17,8 +17,8 @@ for rr=1:size(I1,1)
         xmax = xmin + 1;
         
         % Computing distances a & b needed to use bilinear interpolation
-        b = ( new_col - ymin );
-        a = ( new_row - xmin );
+        b = 0;%( new_col - ymin );
+        a = 0;%( new_row - xmin );
         
                 
         % Check if new coordinates are included in the range
