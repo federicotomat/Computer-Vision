@@ -4,7 +4,7 @@ close all;
 
 %% Image load and Parameters
 I1 = imread('../ImagesPerspDist/original.jpg'); % put here the image name affected by perspective distorsion
-n=4;
+n = 4;
 
 %% 
 string=strcat('Choose ',int2str(n), ' delimiting edges of a distorted shape...');
@@ -30,8 +30,8 @@ end
 X2 = [X2'; ones(1,n)];
 
 % estimate the homography
-[H,~] = my_homography(X1,X2);
-
+%[H,~] = my_homography(X1,X2);
+[H,~,~] = ransacH(X1,X2,.1);
 % direct mapping
 I2 = directMapping(I1, H);
 figure(2), imshow(uint8(I2)), title('Direct mapping');

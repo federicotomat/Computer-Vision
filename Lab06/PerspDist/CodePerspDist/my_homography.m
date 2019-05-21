@@ -20,6 +20,7 @@ for ii=1:size(X1,2)
     j = j+1;
     A(j,1:3) = tmp3'; 
     A(j,7:9) = tmp4';
+    A(j,7:9) = tmp4';
     j = j+1;
     
 end
