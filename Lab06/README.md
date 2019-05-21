@@ -1,1 +1,6 @@
 # Homographies
+
+The Homography transformation is a popular geo-referencing technique used worldwide. It is based on quite complex geometric and mathematic concepts, known as *homogeneous coordinate* and *projective planes*, the explanation of which is not within the scope of this document.
+Just to give a simplified idea, the familiar Cartesian plane is composed by a set of points which have a one-to-one correlation to pairs of real numbers. The *projective planes* instead is a superset of that real plane where for each point we also consider all possible (infinite) straight lines towards space.
+In this scenario every 2D point can be projected in any other plane in the space. Based on these concepts, it is defined the **homography between 2 planes** which, simply speaking, means that given 4 points in a plane, there always exists a relationship that transforms them into the corresponding 4 points in another plane.
+Initially the homography has not been used for map geo-referencing but for other purposes, such as to rectify a perspective image, for example to generate a *plan* view of a building from a *perspective* photo.
