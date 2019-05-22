@@ -1,15 +1,29 @@
-clc;
+%% Lab06-01
+
+addpath('include');
+addpath('input');
+
 clear all;
 close all;
 
 %% Image load and Parameters
-I1 = imread('../ImagesPerspDist/original.jpg'); % put here the image name affected by perspective distorsion
-n = 4;
+I1 = imread('original.jpg'); % put here the image name affected by perspective distorsion
+loop  = true;
+while(loop)
+    prompt = 'Choose how many points do you want to consider (at least 4): ';
+    n = input(prompt);
+    if n < 4
+        disp('You choose a number < 4');
+    else
+        loop = false; 
+    end
+end
 
-%% 
-string=strcat('Choose ',int2str(n), ' delimiting edges of a distorted shape...');
+%% Choose the points
+
+string = strcat({'Choose '}, int2str(n),{' delimiting edges of a distorted shape...'});
 disp(string);
-string=strcat('Select ', int2str(n), ' points');
+string = strcat({'Select '}, int2str(n), {' points'});
 figure(1), imshow(I1), title(string), hold on;
 X1 = zeros(n,2);
 for i = 1 : n
@@ -19,7 +33,7 @@ for i = 1 : n
 end
 X1 = [X1'; ones(1,n)];
 
-string=strcat('Choose ' ,int2str(n),'points delimiting virtual edges of the new non-distorted shape...');
+string=strcat({'Choose '}, int2str(n), {'points delimiting virtual edges of the new non-distorted shape...'});
 disp(string);
 X2 = zeros(n,2);
 for i = 1 : n

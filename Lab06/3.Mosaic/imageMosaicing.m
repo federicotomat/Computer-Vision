@@ -1,6 +1,12 @@
-clear all;
+%% Lab06-02
 
-folder = '../imagesMosaic/';
+addpath('include');
+
+clc;
+clear all;
+close all;
+
+folder = '../input/';
 Npoints = 8; % put here the number of points you want to use
 
 % look into the folder content assuming there are only image files

@@ -1,9 +1,14 @@
+%% Lab06-02
+
+addpath('include');
+addpath('input');
+
 clc;
 clear all;
 close all;
 
-I1 = imread('../imagesHomog/SET1_01.jpg'); % put the first image here
-I2 = imread('../imagesHomog/SET1_02.jpg'); % put the second image here
+I1 = imread('../input/SET1_01.jpg'); % put the first image here
+I2 = imread('../input/SET1_02.jpg'); % put the second image here
 
 disp('Choose 4 points...');
 figure, imshow(I1), title('Select 4 points'), hold on;
