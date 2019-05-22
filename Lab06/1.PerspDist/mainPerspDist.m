@@ -1,7 +1,7 @@
 %% Lab06-01
 
-addpath('include');
-addpath('input');
+addpath('1.PerspDist\include');
+addpath('1.PerspDist\input');
 
 clear all;
 close all;
@@ -43,17 +43,47 @@ for i = 1 : n
 end
 X2 = [X2'; ones(1,n)];
 
-% estimate the homography
-%[H,~] = my_homography(X1,X2);
-[H,~,~] = ransacH(X1,X2,.1);
-% direct mapping
+
+loop  = true;
+while(loop)
+    prompt = 'Choose if you want to exec homography (1) or ransac (2): ';
+    n = input(prompt);
+    switch(n)
+        case 1
+            % Estimate the homography
+            [H,~] = my_homography(X1, X2);
+            loop = false;
+        case 2
+            % Use ransac method
+            [H,~,~] = ransacH(X1,X2,.1);
+            loop = false;
+        otherwise
+            disp('Input not valid');
+    end         
+end
+
+% Direct mapping
 I2 = directMapping(I1, H);
 figure(2), imshow(uint8(I2)), title('Direct mapping');
 
-% inverse mapping
+% Inverse mapping
 [I3, I4] = inverseMapping(I1, H);
 figure(3), imshow(uint8(I3)), title('Inverse mapping without bilinear interpoletion');
 figure(4), imshow(uint8(I4)), title('Inverse mapping with bilinear interpolation');
+
+% Compare result
+[H1,~] = my_homography(X1, X2);
+[H2,~] = my_homography(X1, X2, flag);
+[H3,~,~] = ransacH(X1,X2,.1);
+
+printFigure(3, 1, {directMapping(I1, H1), directMapping(I1, H2), directMapping(I1, H3)},{3,3,3}, {'Homography not Normalized', 'Homography Normalized', 'Ransac Method'}, 1);
+
+[I1, I2] = inverseMapping(I1, H1);
+[I3, I4] = inverseMapping(I1, H2);
+[I5, I6] = inverseMapping(I1, H3);
+
+printFigure(6, 2, {I1, I2, I3, I4, I5, I6},{3,3,3,3,3,3}, {'Homography not Normalized and Bi', 'Homography not Normalized and Bi', 'Ransac Method', 'Homography Normalized and not Bi', 'Homography Normalized and not Bi', 'Ransac Method'}, 1);
+
 
 
 

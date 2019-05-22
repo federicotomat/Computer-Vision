@@ -3,7 +3,7 @@
 clear all
 close all
 
-addpath('1.PerpDist')
+addpath('1.PerspDist')
 addpath('2.ImagesHomog')
 addpath('3.Mosaic')
 
@@ -13,40 +13,19 @@ while(loop)
     x = input(prompt);
     switch (x)
         case 1
-            folder  = '1.PerpDist';
-            file    = load(fullfile(folder, 'mainPerpDist.m'));
-            success = false;
-            try
-                run(file);
-                success = true;
-            catch
-                fprintf('Failed to run: %s\n', file);
-            end
+            file = 'mainPerspDist.m';
+            run(file);
             loop = false;
         case 2
-            folder  = '2.ImagesHomog';
-            file    = load(fullfile(folder, 'homographyBetweenImages.m'));
-            success = false;
-            try
-                run(file);
-                success = true;
-            catch
-                fprintf('Failed to run: %s\n', file);
-            end
+            file = 'homographyBetweenImages.m';
+            run(file);
             loop = false;
         case 3
-            folder  = '3.Mosaic';
-            file    = load(fullfile(folder, 'imageMosaicing.m'));
-            success = false;
-            try
-                run(file);
-                success = true;
-            catch
-                fprintf('Failed to run: %s\n', file);
-            end
+            file = 'imageMosaicing.m';
+            run(file);
             loop = false;
         otherwise
-        disp('Incorrect enter value');
+        disp('Incorrect enter value, try again');
     end
 end
   

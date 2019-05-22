@@ -1,33 +1,51 @@
 %% Lab06-02
 
-addpath('include');
+addpath('3.Mosaic\include');
+addpath('3.Mosaic\input');
 
-clc;
-clear all;
-close all;
+folder = '3.Mosaic\input';
 
-folder = '../input/';
-Npoints = 8; % put here the number of points you want to use
+loop  = true;
+while(loop)
+    prompt = 'Choose how many points do you want to consider (at least 4): ';
+    Npoints = input(prompt); % Request to user the number of points he want to use
+    if Npoints < 4
+        disp('You have choosen a number < 4');
+    else
+        loop = false; 
+    end
+end
 
-% look into the folder content assuming there are only image files
+% Look into the folder content assuming there are only image files
 S = dir(folder);
 Nimg = length(S)-2;
 
-% loading the images
+% Loading the images
 for k = 3 : length(S)
     I{k-2}=imread([folder,'/',S(k).name]);
     I{k-2}=rgb2gray(I{k-2});
-    I{k-2}=I{k-2}(1:5:size(I{k-2},1), 1:5:size(I{k-2},2)); % resize the images if too big...
+    I{k-2}=I{k-2}(1:5:size(I{k-2},1), 1:5:size(I{k-2},2)); % Resize the images if too big...
 end
 
 %%
-% the central image of the sequence is assumed to be the reference 
+% The central image of the sequence is assumed to be the reference 
 Nref = round(length(I)/2);
 
 % FIRST SOLUTION: ESTIMATE THE HOMOGRAPHIES FROM ALL THE IMAGES FROM THE
 % SEQUENCE AND THE REFERENCE ONE
 
-for k = 1 : length(I) % decide here how many images you want to consider
+loop  = true;
+while(loop)
+    prompt = 'Choose if you want to exec homography (1) or ransac (2): ';
+    n = input(prompt);
+    if n < 1 && n > 2
+        disp('Input non valid')
+    else
+        loop = false;
+    end
+end
+        
+for k = 1 : length(I) % dEcide here how many images you want to consider
     
     if(k ~= Nref)
         figure, subplot(1,2,1), imshow(I{k}), title(sprintf('Select %d corresponding points on the images', Npoints)), hold on;
@@ -38,8 +56,8 @@ for k = 1 : length(I) % decide here how many images you want to consider
         
         for i = 1 : Npoints
             [xp yp] = ginput(1);
-            Xk(1,i)=xp;
-            Xk(2,i)=yp;
+            Xk(1,i) = xp;
+            Xk(2,i) = yp;
             plot([xp],[yp],'*r');
             text(xp+5,yp-5,sprintf('%d',i), 'Color', 'r');
         end
@@ -57,9 +75,12 @@ for k = 1 : length(I) % decide here how many images you want to consider
         
         close all;
         
-        
-        H{k} = my_homography(Xk, Xref);
-        
+        if n == 1
+            H{k} = my_homography(Xk, Xref);
+        else
+            H{k} = ransacH(Xk, Xref, .1);
+        end
+
         % DEBUG
         PT{k}=Xk;
         PTref{k} = Xref;
@@ -69,9 +90,7 @@ for k = 1 : length(I) % decide here how many images you want to consider
     end
 end
 
-%%
-
-% build the mosaic
+%% Build the mosaic
 
 % first, we have to infer the size of the mosaic image. A strategy might be
 % to compute the coordinate of the 4 boundary corners of each image. Then we 

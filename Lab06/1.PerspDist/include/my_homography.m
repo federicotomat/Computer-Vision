@@ -1,8 +1,17 @@
 
-function [Hn, A ] = my_homography( X1, X2 )
+function [Hn, A ] = my_homography( X1, X2, flag )
 
-[X1, T1] = normalise2dpts(X1);
-[X2, T2] = normalise2dpts(X2);
+if nargin == 2
+    flag = false;
+end
+
+if flag == true 
+    [X1, T1] = normalise2dpts(X1);
+    [X2, T2] = normalise2dpts(X2);
+else
+    T1 = eye(3);
+    T2 = eye(3);
+end
 
 A = zeros(size(X1,2)*2, 9);
 
@@ -19,7 +28,6 @@ for ii=1:size(X1,2)
     A(j,7:9)= tmp2';
     j = j+1;
     A(j,1:3) = tmp3'; 
-    A(j,7:9) = tmp4';
     A(j,7:9) = tmp4';
     j = j+1;
     
