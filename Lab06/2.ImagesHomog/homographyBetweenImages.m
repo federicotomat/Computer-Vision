@@ -68,6 +68,7 @@ end
 figure(3), imshow(uint8(I3)), title('Inverse mapping without bilinear interpoletion');
 figure(4), imshow(uint8(I4)), title('Inverse mapping with bilinear interpolation');
 
+%average image
 Im = (double(I2)+double(I3))/2.;
 figure, imshow(uint8(Im)), title('Average image without bilinear interpolation');
 Im2 = (double(I2)+double(I4))/2.;
