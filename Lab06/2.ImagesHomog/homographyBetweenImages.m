@@ -83,7 +83,8 @@ figure, imshow(uint8(Im2)), title('Average image with bilinear interpolation');
 [I3, I4] = inverseMapping(I1, H2);
 [I5, I6] = inverseMapping(I1, H3);
 
-printFigure(6, 2, {I1, I2, I3, I4, I5, I6},{3,3,3,3,3,3}, {'Homography not Normalized and not Bi', 'Homography not Normalized and Bi', 'Homography Normalized and not Bi', 'Homography Normalized and Bi', 'Ransac Method not Bi', 'Ransac Method and Bi'}, 1);
+printFigure(6, 2, {I1, I3, I5, I2, I4, I6},{3,3,3,3,3,3}, {'Homography not Normalized and not Bi', 'Homography Normalized and not Bi', 'Ransac Method and not Bi', 'Homography not Normalized and Bi', 'Homography Normalized and Bi', 'Ransac Method and Bi'}, 1);
+
 
 
 
