@@ -29,7 +29,7 @@ if(size(pt1,1)==0 || size(pt2,1)==0)
 
             % infer the image from which the point has been selected
             if(x <= size(Im1, 2))
-                disp(sprintf('Point (%d,%d) has been selected from left image ...', round(x), round(y)));
+                fprintf('Point (%d,%d) has been selected from left image ...', round(x), round(y));
 
                 % applying F
                 L = F*[x y 1]';
@@ -40,7 +40,7 @@ if(size(pt1,1)==0 || size(pt2,1)==0)
                 plot(xv+size(Im2,2), yv, '-', 'Color', color);
 
             else
-                disp(sprintf('Point (%d,%d) has been selected from right image ...', round(x-size(Im1,2)), round(y)));
+                fprintf('Point (%d,%d) has been selected from right image ...', round(x-size(Im1,2)), round(y));
 
                 % applying F'
                 L = F'*[x-size(Im1,2) y 1]';

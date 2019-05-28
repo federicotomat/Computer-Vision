@@ -10,13 +10,13 @@
 
 function F = EightPointsAlgorithmN(P1,P2)
 
-    [nP1, T1] = normalise2dpts(P1)
+    [nP1, T1] = normalise2dpts(P1);
     [nP2, T2] = normalise2dpts(P2);
     
     uno(1:size(nP1,2)) = 1;
     
-    A = [(nP2(1,:).*nP1(1,:))', (nP2(1,:).*nP1(2,:))', (nP2(1,:)'), 
-         (nP1(1,:).*nP2(2,:))', (nP1(2,:).*nP2(2,:))', (nP2(2,:)'), 
+    A = [(nP2(1,:).*nP1(1,:))', (nP2(1,:).*nP1(2,:))', (nP2(1,:)') ... 
+         (nP1(1,:).*nP2(2,:))', (nP1(2,:).*nP2(2,:))', (nP2(2,:)') ... 
                    (nP1(1,:)'),           (nP1(2,:))',       uno'];
   
     [U,D,V] = svd(A);
