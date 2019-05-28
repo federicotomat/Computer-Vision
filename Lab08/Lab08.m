@@ -56,8 +56,8 @@ disp(rightE);
 %   correspondences to your points. Since the 8 points algorithm use them all after 
 %   a while the  estimate will be wrong.
 
-p1Err = [p1 , [1; 2; 148]];
-p2Err = [p2 , [100; 1; 2]];
+p1Err = [p1 , [112; 25; 1]];
+p2Err = [p2 , [100; 10; 1]];
 
 %2. In these cases we would need to resort to robust statistics methods such as RANSAC: 
 %   you may have a look (and comment) at the behavior of other algorithms implemented 
