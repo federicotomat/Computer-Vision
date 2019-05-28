@@ -7,5 +7,6 @@
 % best fits (varies least) from the data.
 
 function d = my_ssd(N1, N2)
-    d = sum( sum( (N1-N2).^2) );
+    X = N1 - N2;
+    d = sum(X(:).^2);
 end
