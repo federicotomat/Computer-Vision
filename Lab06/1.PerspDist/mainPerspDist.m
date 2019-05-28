@@ -7,7 +7,7 @@ clear all;
 close all;
 
 %% Image load and Parameters
-I1 = imread('original.jpg'); % put here the image name affected by perspective distorsion
+I1 = imread('cathedral.jpg'); % put here the image name affected by perspective distorsion
 loop  = true;
 while(loop)
     prompt = 'Choose how many points do you want to consider (at least 4): ';
@@ -20,9 +20,8 @@ while(loop)
 end
 
 %% Choose the points
-
-string = strcat({'Choose '}, int2str(n),{' delimiting edges of a distorted shape...'});
-disp(string);
+formatSpec = 'Choose %d delimiting edges of a distorted shape...\n';
+fprintf(formatSpec,n)
 string = strcat({'Select '}, int2str(n), {' points'});
 figure(1), imshow(I1), title(string), hold on;
 X1 = zeros(n,2);
@@ -33,8 +32,8 @@ for i = 1 : n
 end
 X1 = [X1'; ones(1,n)];
 
-string=strcat({'Choose '}, int2str(n), {'points delimiting virtual edges of the new non-distorted shape...'});
-disp(string);
+formatSpec = 'Choose %d points delimiting virtual edges of the new non-distorted shape...\n';
+fprintf(formatSpec,n)
 X2 = zeros(n,2);
 for i = 1 : n
     X2(i,:) = ginput(1);
@@ -46,7 +45,7 @@ X2 = [X2'; ones(1,n)];
 
 loop  = true;
 while(loop)
-    prompt = 'Choose if you want to exec homography (1) or ransac (2): ';
+    prompt = 'Choose if you want to exec homography insert 1 or to exec ransac insert 2: ';
     n = input(prompt);
     switch(n)
         case 1

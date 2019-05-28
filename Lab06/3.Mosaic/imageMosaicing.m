@@ -36,7 +36,7 @@ Nref = round(length(I)/2);
 
 loop  = true;
 while(loop)
-    prompt = 'Choose if you want to exec homography (1) or ransac (2): ';
+    prompt = 'Choose if you want to exec homography insert 1 or to exec ransac insert 2: ';
     n = input(prompt);
     if n < 1 && n > 2
         disp('Input non valid')

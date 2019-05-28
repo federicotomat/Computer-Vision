@@ -21,9 +21,9 @@ while(loop)
     end
 end
 
-string = strcat({'Choose '}, int2str(n),{' points...'});
-disp(string);
-stringTitle = strcat({'Select '}, int2str(n), {' points...'});
+formatSpec = 'Choose %d points on image...\n';
+fprintf(formatSpec,n)
+stringTitle = strcat({'Select '}, int2str(n), {' points'});
 figure, imshow(I1), title(stringTitle), hold on;
 
 X1 = zeros(n,2);
@@ -34,8 +34,8 @@ for i = 1 : n
 end
 X1 = [X1'; ones(1,n)];
 
-string = strcat({'Choose the corresponging '}, int2str(n),{ ' points on the other image...'});
-disp(string);
+formatSpec = 'Choose the corresponding %d points on the other image...\n';
+fprintf(formatSpec,n)
 figure, imshow(I2), title(stringTitle), hold on;
 X2 = zeros(n,2);
 for i = 1 : n
@@ -47,7 +47,7 @@ X2 = [X2'; ones(1,n)];
 
 loop  = true;
 while(loop)
-    prompt = 'Choose if you want to exec homography (1) or ransac (2): ';
+    prompt = 'Choose if you want to exec homography insert 1 or to exec ransac insert 2: ';
     n = input(prompt);
     switch(n)
         case 1
