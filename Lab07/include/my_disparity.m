@@ -21,7 +21,7 @@ function disparityMap = my_disparity(I1, I2, W, dmin, dmax)
             for d=dmin:dmax
 
                 N2 = I2(r-halfW:r+halfW, c+d-halfW:c+d+halfW);
-                dvec(d+offset+1) = -my_ssd(N1,N2);
+                dvec(d+offset+1) = my_ssd(N1,N2);
 
             end
             % Assign the maximum similarity point to D(r,c)

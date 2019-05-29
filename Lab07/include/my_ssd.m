@@ -8,5 +8,5 @@
 
 function d = my_ssd(N1, N2)
     X = N1 - N2;
-    d = sum(X(:).^2);
+    d = - sum(X(:).^2);
 end
