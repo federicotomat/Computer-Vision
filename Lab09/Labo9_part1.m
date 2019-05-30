@@ -1,8 +1,11 @@
 clc, clear all, close all;
 
+addpath('ImageMatching')
+addpath('libraries')
+
 % load the images pair
-img1 = rgb2gray(imread('images/Monster.jpg'));
-img2 = rgb2gray(imread('images/Ex01_01.jpg'));
+img1 = rgb2gray(imread('ImageMatching/images/Monster.jpg'));
+img2 = rgb2gray(imread('ImageMatching/images/Ex01_01.jpg'));
 
 % if the images are too large you might want to resize them to a smaller
 % size

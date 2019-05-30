@@ -3,8 +3,11 @@ close all;
 clear all;
 clc;
 
+addpath('ImageRetrieval')
+addpath('libraries')
+
 %% Load images
-dir_jpg='images/';
+dir_jpg='ImageRetrieval/images/';
 [imlist, gnd, qidx] = load_images(dir_jpg);
 
 %% Feature extraction
