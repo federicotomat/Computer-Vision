@@ -1,1 +1,3 @@
 # Disparity Calculation
+
+In traditional stereo vision, two cameras, displaced horizontally from one another are usedto obtain two differing views on a scene, in a manner similar to human binocular vision.By comparing these two images, the relative depth information can be obtained in the formof a disparity map, which encodes the difference in horizontal coordinates of correspondingimage points. The values in this disparity map are inversely proportional to the scene depthat the corresponding pixel location

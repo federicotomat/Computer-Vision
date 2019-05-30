@@ -7,7 +7,7 @@ clear all;
 close all;
 
 %% Image load and Parameters
-I1 = imread('cathedral.jpg'); % put here the image name affected by perspective distorsion
+I1 = imread('original.jpg'); % put here the image name affected by perspective distorsion
 loop  = true;
 while(loop)
     prompt = 'Choose how many points do you want to consider (at least 4): ';
@@ -77,11 +77,11 @@ figure(4), imshow(uint8(I4)), title('Inverse mapping with bilinear interpolation
 
 printFigure(3, 1, {directMapping(I1, H1), directMapping(I1, H2), directMapping(I1, H3)},{3,3,3}, {'Homography not Normalized', 'Homography Normalized', 'Ransac Method'}, 1);
 
-[I1, I2] = inverseMapping(I1, H1);
-[I3, I4] = inverseMapping(I1, H2);
-[I5, I6] = inverseMapping(I1, H3);
+[I2, I3] = inverseMapping(I1, H1);
+[I4, I5] = inverseMapping(I1, H2);
+[I6, I7] = inverseMapping(I1, H3);
 
-printFigure(6, 2, {I1, I3, I5, I2, I4, I6},{3,3,3,3,3,3}, {'Homography not Normalized and not Bi', 'Homography Normalized and not Bi', 'Ransac Method and not Bi', 'Homography not Normalized and Bi', 'Homography Normalized and Bi', 'Ransac Method and Bi'}, 1);
+printFigure(6, 2, {I2, I4, I6, I3, I5, I7},{3,3,3,3,3,3}, {'Homography not Normalized and not Bi', 'Homography Normalized and not Bi', 'Ransac Method and not Bi', 'Homography not Normalized and Bi', 'Homography Normalized and Bi', 'Ransac Method and Bi'}, 1);
 
 
 
