@@ -32,24 +32,24 @@ end
 
 
 % Sum of Squares
-d = my_ssd(I1, I2);
-fprintf("The result of my_ssd is: %f", d);
+% d = my_ssd(I1, I2);
+% fprintf("The result of my_ssd is: %f", d);
 
 % Display the images after rectification.
 figure; imshowpair(I1,I2,'ColorChannels','red-cyan'),title('Images after rectification');
 
 % Disparity function
 disparityMap = my_disparity(I1, I2, 15, disparity(1), disparity(2));
-figure; imshow(mat2gray(disparityMap)),title('bella raga');
+figure; imshow(mat2gray(disparityMap)),title('Disparity');
 
-% % Disparity Final function
-% disparityMap = my_disparity_final(I1, I2, 15, disp(1), disp(2)); 
-% 
-% % realmax('single') returns the largest finite floating-point number in IEEE single precision.
-% marker_idx = (disparityMap == -realmax('single'));
-% disparityMap(marker_idx) = min(disparityMap(~marker_idx));
-%  
-% % Show the disparity map. Brighter pixels indicate objects which are
-% % closer to the camera.
-% figure; imshow(mat2gray(disparityMap)), title('Final disparity map');
-% colormap jet; colorbar;
+% Disparity Final function
+disparityMap = my_disparity_final(I1, I2, 15, disparity(1), disparity(2)); 
+
+% realmax('single') returns the largest finite floating-point number in IEEE single precision.
+marker_idx = (disparityMap == -realmax('single'));
+disparityMap(marker_idx) = min(disparityMap(~marker_idx));
+ 
+% Show the disparity map. Brighter pixels indicate objects which are
+% closer to the camera.f
+figure; imshow(mat2gray(disparityMap)), title('Final disparity map');
+colormap jet; colorbar;

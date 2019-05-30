@@ -7,10 +7,10 @@ folder = '3.Mosaic\input';
 
 loop  = true;
 while(loop)
-    prompt = 'Choose how many points do you want to consider (at least 4): ';
+    prompt = 'Choose how many points do you want to consider (at least 8): ';
     Npoints = input(prompt); % Request to user the number of points he want to use
     if Npoints < 4
-        disp('You have choosen a number < 4');
+        disp('You have choosen a number < 8');
     else
         loop = false; 
     end

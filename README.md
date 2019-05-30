@@ -9,6 +9,7 @@
 6. [Homographies](https://github.com/federicotomat/Computer-Vision/tree/master/Lab06)
 7. [Disparity computation](https://github.com/federicotomat/Computer-Vision/tree/master/Lab07)
 8. [Fundamental matrix estimation](https://github.com/federicotomat/Computer-Vision/tree/master/Lab08)
+8. [Image Matching and Retrival](https://github.com/federicotomat/Computer-Vision/tree/master/Lab09)
 
 ## Authors
 | Name | E-mail |
