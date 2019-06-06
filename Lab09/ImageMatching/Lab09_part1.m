@@ -1,9 +1,10 @@
 clc, clear all, close all;
+
 %% Config
 
 cd ..;
 path_config;
-cd ImageRetrieval;
+cd ImageMatching;
 
 %% load the images pair
 img1 = rgb2gray(imread('images/Monster.jpg'));

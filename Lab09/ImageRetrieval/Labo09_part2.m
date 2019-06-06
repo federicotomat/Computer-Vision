@@ -16,6 +16,7 @@ dir_jpg='images/';
 %% Using findMatches
 nimg = length(imlist);
 load_features = false;
+n_comparison=8;
 for i=1:nimg
         
     filename_feature = fullfile('data/features', [imlist{i}(7:end), '.mat']);
@@ -37,7 +38,7 @@ loop  = true;
 while(loop)
     prompt = 'Choose on which image you want to apply the algorithm: ' ;
     number = input(prompt);
-    if (number < nimg && number > 0 && floor(number) == number)
+    if (number < nimg && number > 0 && floor(number) == number )
         loop = false;
     else  
         disp('Incorrect enter value, try again');
@@ -57,7 +58,8 @@ end
 % show_matches(imgList{1}, imgList{index}, list_sift{index}, 1, 2);
 
 [order, index] = sort(maxList, 'descend');
-for i=1:8
+
+for i=1:n_comparison
     show_matches(imgList{number}, imgList{index(i)}, list_sift{index(i)}, 1, i);
 end
 % %% Feature extraction
