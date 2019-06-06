@@ -1,6 +1,11 @@
 clc, clear all, close all;
+%% Config
 
-% load the images pair
+cd ..;
+path_config;
+cd ImageRetrieval;
+
+%% load the images pair
 img1 = rgb2gray(imread('images/Monster.jpg'));
 img2 = rgb2gray(imread('images/Ex01_01.jpg'));
 

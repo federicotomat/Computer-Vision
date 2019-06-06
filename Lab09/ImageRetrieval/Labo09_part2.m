@@ -3,6 +3,12 @@ close all;
 clear all;
 clc;
 
+%% Config
+
+cd ..;
+path_config;
+cd ImageRetrieval;
+
 %% Load images
 dir_jpg='images/';
 [imlist, gnd, qidx] = load_images(dir_jpg);
