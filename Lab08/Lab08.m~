@@ -56,7 +56,7 @@ disp(rightE);
 %   correspondences to your points. Since the 8 points algorithm use them all after 
 %   a while the  estimate will be wrong.
 
-np1=0;
+np1=4;
 
 ErrMat1 = [randi([1 max(max(round(p1/2)))],2,np1); ones(1,np1)];
 ErrMat2 = [randi([1 max(max(round(p2/2)))],2,np1); ones(1,np1)];
