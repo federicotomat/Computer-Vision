@@ -31,9 +31,25 @@ for i = 1: length(thresh)*length(sigma1)
         k=k+1;
     end
     h=h+1;
-    ns=h
-    nTr=k
+    ns=h;
+    nTr=k;
+    
+    %fname = /where/you/want/to/save
+        
     %figure(i), show_matches(img1, img2, list_ncc{i}, 0, 1);
+
+    % hold off
+    %fig = figure(i);
+    %figname = ['fig_', saveTitle, '.jpg'];
+    %saveas(fig, fullfile(fname, figname), 'jpeg')
+    %close(fig)
+    
     %figure((length(thresh)*length(sigma1)+1), show_matches(img1, img2, list_sift{i}, 0, 2);
+    
+    % hold off
+    %fig = figure((length(thresh)*length(sigma1)+1);
+    %figname = ['fig_', saveTitle, '.jpg'];
+    %saveas(fig, fullfile(fname, figname), 'jpeg')
+    %close(fig)
 end
 

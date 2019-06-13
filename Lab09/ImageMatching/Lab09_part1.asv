@@ -24,20 +24,32 @@ sigma2 = [.5 1.5 2.6];
 % list_ncc = findMatches(img1, img2, 'NCC', thresh, sigma1, sigma2);
 % list_sift = findMatches(img1, img2, 'SIFT', thresh, sigma1, sigma2);
 h=0;
-nTr=1;
+k=0;
 for i = 1: length(thresh)*length(sigma1)
     if mod(h,length(thresh))==0
         h=0;
+        k=k+1;
     end
     h=h+1;
-    ns=h
+    ns=h;
+    nTr=k;
     
-    if mod(ns,length(sigma1))==0
-        nTr=
-    end
-    nTr =k+1
+    %fname = /where/you/want/to/save
+        
     %figure(i), show_matches(img1, img2, list_ncc{i}, 0, 1);
+
+    % hold off
+    %fig = figure(i);
+    %figname = ['fig_', saveTitle, '.jpg'];
+    %saveas(fig, fullfile(fname, figname), 'jpeg')
+    %close(fig)
+    
     %figure((length(thresh)*length(sigma1)+1), show_matches(img1, img2, list_sift{i}, 0, 2);
-    k=k+1;
+    
+    % hold off
+    %fig = figure((length(thresh)*length(sigma1)+1);
+    %figname = ['fig_', saveTitle, '.jpg'];
+    %saveas(fig, fullfile(fname, figname), 'jpeg')
+    %close(fig)
 end
 
