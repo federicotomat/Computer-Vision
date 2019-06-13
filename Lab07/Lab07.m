@@ -21,8 +21,8 @@ addpath('input')
 % I2=imread('corridor_r_original.jpg'); 
 % disp=[2 18];
 
-I1=imread('Dino_L.png'); 
-I2=imread('Dino_R.png'); 
+I1=imread('rds_L.jpg'); 
+I2=imread('rds_R.jpg'); 
 disparity = [0 16];
 
 if (size(I1,3)==3)

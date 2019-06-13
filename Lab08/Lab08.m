@@ -8,12 +8,12 @@ addpath('include');
 addpath('input/Rubik');
 
 % Read the input images
-img1 = imread('Rubik1.pgm');
-img2 = imread('Rubik2.pgm');
+img1 = imread('Mire1.pgm');
+img2 = imread('Mire2.pgm');
 
 % Load corresponding points
-p1 = load('Rubik1.points')';
-p2 = load('Rubik2.points')';
+p1 = load('Mire1.points')';
+p2 = load('Mire2.points')';
 
 N = length(p1(1,:)); 
 p1 = [p1; ones(1,N)]; 
