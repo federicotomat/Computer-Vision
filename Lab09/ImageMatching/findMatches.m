@@ -1,16 +1,16 @@
 function [list] = findMatches(img1, img2, type,VTHRESH,Vsigma1,Vsigma2)
 c=1;
 if length(Vsigma1)== length(Vsigma2)
-    for i=1:length(VTHRESH)
-        THRESH=VTHRESH(i)
-        for j=1:length(Vsigma1)
+    for h=1:length(VTHRESH)
+        THRESH=VTHRESH(h);
+        for l=1:length(Vsigma1)
             % extract CORNERTHRESHS and SIFTs from both images
             % f1_all and f2_all contain the keypoints positions
             % d1_all and d2_all contain the sift descriptors
             
-            [f1_all d1_all] = vl_covdet(single(img1), 'Method', 'MultiscaleHarris',  'PeakThreshold', 10000, ...
+            [f1_all, d1_all] = vl_covdet(single(img1), 'Method', 'MultiscaleHarris',  'PeakThreshold', 10000, ...
                 'descriptor', 'SIFT');
-            [f2_all d2_all] = vl_covdet(single(img2), 'Method', 'MultiscaleHarris',  'PeakThreshold', 10000, ...
+            [f2_all, d2_all] = vl_covdet(single(img2), 'Method', 'MultiscaleHarris',  'PeakThreshold', 10000, ...
                 'descriptor', 'SIFT');
             
             % Eliminating features too close to borders (where the patch would partially fall outside the image)
@@ -33,7 +33,7 @@ if length(Vsigma1)== length(Vsigma2)
                 
                 % SET SIGMA (for the euclidean distance contribution) TO AN APPROPRIATE
                 % VALUE
-                sigma = Vsigma1(j);
+                sigma = Vsigma1(l);
                 % SET THE PATCH SIZE (for the NCC contribution) TO AN APPROPRIATE VALUE
                 % (delta is half the size of the patch, i.e. if delta=2 the patch is 5x5)
                 delta = 1;
@@ -63,7 +63,7 @@ if length(Vsigma1)== length(Vsigma2)
                 A1 = U*I*V';
                 
                 % Detecting good matches
-                tlist = [];
+                list{c} = [];
                 
                 for i = 1 : size(A1, 1)
                     
@@ -72,7 +72,7 @@ if length(Vsigma1)== length(Vsigma2)
                     
                     
                     if(k==i && maxvali >= THRESH) % IF YOU WANT TO CONSIDER A THRESHOLD ADD A CONDITION: && maxvali >= THRESH
-                        list{c} = [tlist; F1(2:-1:1,i)' F2(2:-1:1,j)'];
+                        list{c} = [list{c}; F1(2:-1:1,i)' F2(2:-1:1,j)'];
                     end
                 end
                 c=c+1;
@@ -84,7 +84,7 @@ if length(Vsigma1)== length(Vsigma2)
                 
                 % SET THE SIGMA TO AN APPROPRIATE VALUE (notice this time it refers to the
                 % comparison of vectors, thus it can not be interpreted in pixels)
-                sigma = Vsigma2(j);
+                sigma = Vsigma2(l);
                 
                 A = zeros(size(D1, 2), size(D2, 2));
                 
@@ -104,7 +104,7 @@ if length(Vsigma1)== length(Vsigma2)
                 A1 = U*I*V';
                 
                 % Detecting good matches
-                list = [];
+                list{c} = [];
                 
                 for i = 1 : size(A1, 1)
                     
@@ -112,7 +112,7 @@ if length(Vsigma1)== length(Vsigma2)
                     [maxvalj, k] = max(A1(:,j));
                     
                     if(k==i && maxvali >= THRESH) % if you want to consider a threshold add a condition && maxvali >= THRESH
-                        list = [tlist; F1(2:-1:1,i)' F2(2:-1:1,j)'];
+                        list{c} = [list{c}; F1(2:-1:1,i)' F2(2:-1:1,j)'];
                     end
                 end
                 c=c+1;
