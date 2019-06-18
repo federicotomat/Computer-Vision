@@ -17,16 +17,22 @@ img2 = imresize(img2, 0.5);
 
 %% Input vector
  
-thresh = (.1: .1: 1);
+thresh = (0.1: .1: 1);
 sigma1 = (1:2:10);
 sigma2 = (.1:.4:2);
  
-list_ncc = findMatches(img1, img2, 'NCC', thresh, sigma1, sigma2);
-list_sift = findMatches(img1, img2, 'SIFT', thresh, sigma1, sigma2);
+%list_ncc = findMatches(img1, img2, 'NCC', thresh, sigma1, sigma2);
+%list_sift = findMatches(img1, img2, 'SIFT', thresh, sigma1, sigma2);
+
+load('list_ncc.mat');
+load('list_sift.mat');
 
 h=0;
 k=0;
 fname = 'images/result'; 
+
+%NCC_points = zeros(length(thresh)*length(sigma1),3);
+%SIFT_points = zeros(length(thresh)*length(sigma1),3);
 
 for i = 1: length(thresh)*length(sigma1)
     i2 = (length(thresh)*length(sigma1)+i);
@@ -40,15 +46,11 @@ for i = 1: length(thresh)*length(sigma1)
     
     ns=h;
     nTr=k;
-    if size(list_ncc{i}) ~= 0
-        figure(401), plot3(sigma1(ns),thresh(nTr),size(list_ncc{i}),'or'),...
-            hold on, xlabel('Sigma'), ylabel('Trheshold'), zlabel('Features matched');
-    end
     
-    if size(list_sift{i}) ~= 0
-        figure(400), plot3(sigma1(ns),thresh(nTr),size(list_sift{i}),'or'),...
-            hold on, xlabel('Sigma'), ylabel('Trheshold'), zlabel('Features matched');
-    end
+    
+    NCC_points(i,:) = [thresh(nTr),sigma1(ns), size(list_ncc{i},1)];
+    SIFT_points(i,:) = [thresh(nTr),sigma1(ns),size(list_sift{i},1)];
+
 %     saveTitle1 = ['NCC with sigma = ', num2str(sigma1(ns)),' and threshold =',num2str(thresh(nTr))];
 %     show_matches(img1, img2, list_ncc{i}, 0, i);
 %     figname1 = ['fig_', saveTitle1, '.png'];
@@ -62,3 +64,12 @@ for i = 1: length(thresh)*length(sigma1)
 
 end
 
+for i = 1:5:length(thresh)*length(sigma1)
+    txt = strcat('threshold = ', num2str(thresh(1+floor(i/5)),3));
+    figure(1)
+    plot3(NCC_points(i:4+i,1),NCC_points(i:4+i,2), NCC_points(i:4+i,3)), grid on, hold on
+    t = text(NCC_points(i,1),NCC_points(i,2), NCC_points(i,3),txt);
+    figure(2)
+    plot3(SIFT_points(i:4+i,1),SIFT_points(i:4+i,2), SIFT_points(i:4+i,3)), grid on, hold on
+    t = text(SIFT_points(i,1),SIFT_points(i,2), SIFT_points(i,3),txt);
+end
