@@ -31,7 +31,7 @@ if(strcmp(type, 'NCC'))
 
     % SET SIGMA (for the euclidean distance contribution) TO AN APPROPRIATE
     % VALUE
-    sigma = 0.001;
+    sigma = 3;
     % SET THE PATCH SIZE (for the NCC contribution) TO AN APPROPRIATE VALUE 
     % (delta is half the size of the patch, i.e. if delta=2 the patch is 5x5)
     delta = 1; 
@@ -81,7 +81,7 @@ elseif(strcmp(type,'SIFT'))
 
     % SET THE SIGMA TO AN APPROPRIATE VALUE (notice this time it refers to the
     % comparison of vectors, thus it can not be interpreted in pixels)
-    sigma = 0.5;
+    sigma = 1.;
 
     A = zeros(size(D1, 2), size(D2, 2));
 

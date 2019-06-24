@@ -55,11 +55,8 @@ end
 
 [order, index] = sort(maxList, 'descend');
 
-disp('The sorted images via SIFT descriptor are:');
-disp(index);
-
 % for i=1:n_comparison
-%     show_matches(imgList{number}, imgList{index(i)}, list_sift{index(i)}, 0, i);
+%     show_matches(imgList{number}, imgList{index(i)}, list_sift{index(i)}, 1, i);
 % end
 
 %% Feature extraction
@@ -194,10 +191,8 @@ distances = distances(1:num_ranked_images, :);
 % rank and show the results
 idx = idx(1:num_ranked_images, :);
 
-disp('the sorted image are:')
-
 if num_ranked_images > size(idx, 1)
-    num_ranked_images = size(idx, 1);
+    num_ranked_images = size(idx, 1)
 end
 
 % showranking(num_ranked_images, imlist1, length(imlist1), idx, distances);
